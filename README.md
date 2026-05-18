@@ -2,34 +2,35 @@
 
 ## Présentation du projet
 
-Blanc Studio est un site vitrine statique réalisé dans le cadre d'un projet de formation pour le titre professionnel Développeur Web et Web Mobile.
+Blanc Studio est un site vitrine réalisé dans le cadre d'un projet de formation pour le titre professionnel Développeur Web et Web Mobile.
 
-Le site présente une studio fictif spécialisée dans le design d'intérieur, la visualisation 3D, l'architecture et les supports de présentation immobilière.
+Le projet présente une studio fictif spécialisée dans le design d'intérieur, la visualisation 3D, les perspectives architecturales et les supports de présentation pour l'immobilier.
 
 ## Objectif
 
-L'objectif est de présenter les services de Blanc Studio, afficher des exemples de projets et permettre à un visiteur d'envoyer une demande de contact simulée.
+L'objectif est de présenter les services de Blanc Studio, afficher un portfolio de projets, montrer une équipe et permettre à un visiteur d'envoyer une demande de contact simulée.
 
 ## Technologies utilisées
 
-- HTML
-- CSS
+- React
+- Vite
+- React Router
 - JavaScript
-- Vite pour lancer et construire le site
-- Docker avec Nginx pour servir la version de production
+- CSS
+- Données locales en JSON
+- Docker et Nginx pour servir la version de production
 
 ## Fonctionnalités
 
-- Navigation responsive
-- Page d'accueil avec hero
-- Galerie de visuels
-- Présentation des services
-- Processus de travail
-- Portfolio simple
-- Avis clients fictifs
-- Formulaire de contact avec validation front-end
-- Message de confirmation après envoi
-- Design responsive mobile, tablette et desktop
+- Navigation responsive.
+- Pages séparées avec React Router.
+- Page d'accueil avec hero, galerie, services, équipe, portfolio et témoignages.
+- Portfolio filtrable par catégorie.
+- Page détail projet.
+- Formulaire de contact avec validation front-end.
+- Sauvegarde simulée de la demande dans le localStorage.
+- Témoignages avec quatre logos/icônes clients.
+- Responsive mobile, tablette et desktop.
 
 ## Installation locale
 
@@ -38,7 +39,7 @@ npm install
 npm run dev
 ```
 
-Le projet est ensuite disponible ici :
+Puis ouvrir :
 
 ```text
 http://localhost:5173
@@ -46,7 +47,7 @@ http://localhost:5173
 
 ## Lancer une version de production sans Docker
 
-Si Docker n'est pas disponible sur la machine, il est possible de lancer une prévisualisation de production :
+Si Docker n'est pas disponible sur la machine :
 
 ```bash
 npm run build
@@ -61,44 +62,39 @@ http://localhost:8080
 
 ## Lancer le projet avec Docker
 
-Le projet peut aussi être lancé dans un conteneur Docker.
-
 Commande :
 
 ```bash
 docker compose up --build
 ```
 
-Puis ouvrir le site dans le navigateur :
+Puis ouvrir :
 
 ```text
 http://localhost:8080
 ```
 
-Pour arrêter le conteneur :
+Pour arrêter :
 
 ```bash
 docker compose down
 ```
 
-Docker permet ici de créer un environnement d'exécution stable pour servir la version de production du site avec Nginx.
-
-Si Docker ne peut pas être installé sur une machine limitée en mémoire RAM, la configuration reste présente dans le projet pour montrer la méthode prévue.
+Docker permet ici de construire l'application avec Node.js, puis de servir le dossier `dist` avec Nginx. Si Docker ne peut pas être installé sur la machine, les fichiers restent présents pour montrer la configuration prévue.
 
 ## Méthode Git utilisée
 
-La méthode prévue pour ce projet est simple :
+La méthode prévue pour le projet :
 
-- `main` contient la version stable du projet ;
-- `develop` peut servir au développement ;
-- les branches `feature` servent à ajouter une fonctionnalité précise ;
-- les commits sont réguliers avec des messages clairs.
+- `main` pour la version stable ;
+- `develop` pour le développement ;
+- branches `feature` pour les fonctionnalités.
 
 Exemples de branches :
 
-- `feature/site-vitrine`
-- `feature/contact-form`
-- `feature/documentation`
+- `feature/restore-design`
+- `feature/testimonials`
+- `feature/exam-docs`
 - `feature/docker`
 
 Commande utile pour montrer l'historique :
@@ -109,35 +105,33 @@ git log --oneline --graph --all
 
 ## Structure du projet
 
-- `index.html` : structure principale du site.
-- `css/style.css` : mise en page, couleurs, responsive design.
-- `js/script.js` : menu mobile, animations simples et formulaire.
-- `public/images` : images utilisées par Vite.
-- `images` : dossier d'images conservé depuis la version initiale.
+- `src/components` : composants réutilisables.
+- `src/pages` : pages du site.
+- `src/data` : données mockées en JSON.
+- `src/styles` : styles globaux.
+- `public/images` : images utilisées par l'application.
 - `docs` : documentation pour l'examen.
-- `Dockerfile`, `docker-compose.yml`, `nginx.conf` : configuration Docker.
+- `Dockerfile`, `docker-compose.yml`, `.dockerignore`, `nginx.conf` : configuration Docker.
 
-## Données
+## Données mockées
 
-Les contenus sont écrits directement dans le HTML pour garder un projet simple et proche d'un site vitrine statique.
+Dans cette version, les données sont mockées localement en JSON. Le formulaire de contact simule l'envoi et peut enregistrer les informations localement. Une future version pourrait être connectée à une API et à une base de données.
 
 ## Accessibilité et responsive
 
-Le site utilise une structure HTML sémantique, des labels associés aux champs du formulaire, des textes alternatifs pour les images utiles, un focus visible au clavier et une mise en page adaptée aux écrans mobiles, tablettes et desktop.
+Le site utilise des balises sémantiques, des textes alternatifs sur les images utiles, des labels de formulaire, un focus visible au clavier et une mise en page responsive.
 
-## Sécurité
+## Limites
 
-- Validation front-end du formulaire.
-- Pas de données sensibles dans le code.
-- Pas de clé API.
-- Pas de mot de passe.
-- Pas de vrai envoi email dans cette version.
-- Les données du formulaire sont enregistrées localement dans le navigateur.
+- Pas de vrai back-end.
+- Pas de vraie base de données.
+- Pas d'envoi réel d'email.
+- Pas d'espace administrateur.
 
 ## Améliorations possibles
 
-- Ajouter plusieurs pages séparées.
-- Ajouter un vrai back-end.
+- Ajouter une API.
 - Connecter une base de données.
-- Créer un espace administrateur.
+- Ajouter un espace administrateur.
+- Permettre l'ajout de projets depuis une interface.
 - Envoyer réellement les messages de contact par email.

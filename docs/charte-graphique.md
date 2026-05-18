@@ -2,15 +2,15 @@
 
 ## Ambiance visuelle
 
-L'ambiance choisie est sobre, claire et professionnelle. Le site doit rappeler une studio d'architecture intérieure et de visualisation 3D.
+L'ambiance choisie reprend la première version du projet : sobre, professionnelle, avec des sections foncées premium, de grands visuels et des cartes élégantes. Le site doit rappeler une studio d'architecture intérieure et de visualisation 3D.
 
 ## Couleurs
 
-- Blanc cassé pour le fond principal.
-- Blanc pour les cartes.
-- Noir doux pour les textes.
-- Gris chaud pour les textes secondaires.
-- Taupe doré pour les accents, les boutons et les éléments actifs.
+- Gris clair pour le fond principal.
+- Bleu nuit pour les sections premium.
+- Blanc pour les cartes et les textes sur fond sombre.
+- Gris bleuté pour les textes secondaires.
+- Beige chaud pour les accents, les détails et les éléments actifs.
 
 ## Typographie
 

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "perspectives-exterieures",
+    "number": "01",
+    "title": "Perspectives extérieures",
+    "description": "Des images photoréalistes pour valoriser l'architecture, le cadre de vie et l'attractivité du programme avant sa construction.",
+    "image": "/images/Images_exteriers/Villa_Cap_Antibes.jpg"
+  },
+  {
+    "id": "visualisation-interieure",
+    "number": "02",
+    "title": "Visualisation intérieure",
+    "description": "Des ambiances élégantes et réalistes pour aider les clients à se projeter dans les volumes, les matières et les usages.",
+    "image": "/images/Images_interiers/Sejour.jpg"
+  },
+  {
+    "id": "animation-3d",
+    "number": "03",
+    "title": "Animation 3D",
+    "description": "Des films courts et immersifs pour raconter un projet, montrer son environnement et renforcer la présentation.",
+    "image": "/images/Images_exteriers/Chalet_Alpes.jpg"
+  },
+  {
+    "id": "visites-virtuelles",
+    "number": "04",
+    "title": "Visites virtuelles / VR",
+    "description": "Des expériences interactives pour explorer un logement, un espace ou un programme avant même sa réalisation.",
+    "image": "/images/Images_interiers/Spa_de_Luxe.jpg"
+  },
+  {
+    "id": "concepts-ia",
+    "number": "05",
+    "title": "Concepts IA",
+    "description": "Des directions visuelles rapides pour tester des ambiances, explorer des variantes et enrichir la phase de conception.",
+    "image": "/images/Images_AI/image_ai_4.png"
+  },
+  {
+    "id": "supports-vente",
+    "number": "06",
+    "title": "Supports de vente",
+    "description": "Images optimisées pour plaquettes, sites web, annonces, présentations investisseurs et lancements commerciaux.",
+    "image": "/images/Images_exteriers/Residence_Mets.jpg"
+  }
+]

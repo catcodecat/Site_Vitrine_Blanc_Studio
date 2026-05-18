@@ -2,59 +2,59 @@
 
 ## Stack
 
-Le projet utilise HTML, CSS et JavaScript. Vite sert à lancer le site en local et à construire une version de production.
+Le projet utilise React, Vite, React Router, JavaScript et CSS.
 
 ## Architecture
 
-- `index.html` contient la structure du site.
-- `css/style.css` contient les styles, la mise en page et le responsive.
-- `js/script.js` contient les interactions simples.
-- `public/images` contient les images servies par Vite.
-- `docs` contient les documents utiles pour l'examen.
+- `src/components` contient les composants réutilisables.
+- `src/pages` contient les pages du site.
+- `src/data` contient les données locales en JSON.
+- `src/styles/global.css` contient le style principal.
+- `public/images` contient les images utilisées dans l'application.
 
-## Pages et sections
+## Routage
 
-Le site est organisé en une page vitrine avec plusieurs sections :
+Les routes principales sont :
 
-- accueil ;
-- galerie ;
-- services ;
-- processus ;
-- portfolio ;
-- références ;
-- contact.
+- `/`
+- `/a-propos`
+- `/services`
+- `/portfolio`
+- `/portfolio/:projectId`
+- `/processus`
+- `/contact`
+- `/mentions-legales`
 
-Ce choix garde le projet simple et proche de la première version.
+## Données
+
+Dans cette version, les données sont mockées localement en JSON. Le formulaire de contact simule l'envoi et peut enregistrer les informations localement. Une future version pourrait être connectée à une API et à une base de données.
 
 ## Formulaire
 
-Le formulaire vérifie côté front-end :
+Le formulaire contient :
 
-- le nom obligatoire ;
-- le format de l'email ;
-- le message obligatoire ;
-- l'acceptation obligatoire.
+- nom ;
+- email ;
+- téléphone facultatif ;
+- type de projet ;
+- budget facultatif ;
+- message ;
+- acceptation de la politique de confidentialité.
 
-Après validation, l'envoi est simulé et la demande est enregistrée dans le localStorage du navigateur.
+La validation est faite côté front-end. Le formulaire n'envoie pas de vrai email.
 
-## Responsive
+## Style visuel
 
-Le CSS contient des media queries pour adapter le menu, les grilles, les images et le formulaire sur mobile, tablette et desktop.
-
-## Accessibilité
-
-Le projet utilise :
-
-- une structure HTML sémantique ;
-- des labels associés aux champs ;
-- des textes alternatifs pour les images utiles ;
-- un focus visible au clavier ;
-- des liens et boutons explicites ;
-- un contraste lisible.
+Le style a été restauré à partir de la version sauvegardée du projet. Les éléments conservés sont le grand hero, les cartes de services, la galerie, la section équipe, les références clients avec logos, les couleurs foncées premium et les visuels déjà présents.
 
 ## Docker
 
-Le projet possède un `Dockerfile` multi-stage. Node.js construit l'application avec `npm run build`, puis Nginx sert le dossier `dist`.
+Le projet possède une configuration Docker :
+
+- `Dockerfile`
+- `docker-compose.yml`
+- `.dockerignore`
+- `nginx.conf`
 
 Commande :
 
@@ -68,7 +68,7 @@ Adresse :
 http://localhost:8080
 ```
 
-Si Docker ne peut pas être installé sur la machine, la configuration reste présente dans le projet. Le site peut aussi être présenté avec :
+Si Docker n'est pas disponible, le site peut être lancé avec :
 
 ```bash
 npm run build
@@ -77,20 +77,27 @@ npm run preview -- --port 8080
 
 ## Git
 
-Le projet a été organisé avec Git afin de garder une trace des principales étapes de développement. Les commits permettent d'identifier l'ajout du site vitrine, du formulaire, de la documentation et de la configuration Docker.
+Git est utilisé pour conserver l'historique des principales étapes du projet. Les commits permettent de montrer la restauration du style, l'ajout des pages, les données, la documentation et la configuration Docker.
+
+## Sécurité
+
+- Pas de clé API dans le code.
+- Pas de mot de passe.
+- Pas de données sensibles.
+- Validation front-end du formulaire.
+- Pas d'injection HTML volontaire dans les contenus.
 
 ## Limites actuelles
 
 - Pas de vrai back-end.
 - Pas de base de données.
 - Pas d'envoi réel d'email.
-- Pas d'espace administrateur.
+- Données mockées localement.
 
 ## Améliorations futures
 
-- Ajouter plusieurs pages si le projet évolue.
-- Ajouter une API.
+- Créer une API.
 - Connecter une base de données.
 - Ajouter une authentification.
-- Créer un espace d'administration pour gérer les projets.
-- Envoyer réellement les messages de contact.
+- Ajouter un espace administrateur.
+- Envoyer les messages par email.

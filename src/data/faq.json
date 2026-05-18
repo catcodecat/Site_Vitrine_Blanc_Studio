@@ -1,0 +1,14 @@
+[
+  {
+    "question": "Le formulaire envoie-t-il un vrai email ?",
+    "answer": "Non. Dans cette version de formation, le formulaire simule l'envoi et enregistre la demande localement dans le navigateur."
+  },
+  {
+    "question": "Les projets du portfolio sont-ils réels ?",
+    "answer": "Les projets sont fictifs, mais construits pour ressembler à des cas clients crédibles."
+  },
+  {
+    "question": "Le projet peut-il évoluer vers un back-end ?",
+    "answer": "Oui. Les données locales sont structurées pour faciliter une future connexion à une API ou à une base de données."
+  }
+]

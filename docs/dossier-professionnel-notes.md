@@ -2,44 +2,40 @@
 
 ## Activité type 1 : Développer la partie front-end d'une application web ou web mobile sécurisée
 
-### Exemple 1 : Création de l'interface responsive du site Blanc Studio
+### Exemple : Création de l'interface responsive du site Blanc Studio
 
-#### 1. Tâches réalisées
+J'ai créé et organisé l'interface du site vitrine Blanc Studio avec React. J'ai travaillé sur la structure des pages, les composants réutilisables, la navigation, les cartes de services, le portfolio et le formulaire de contact. J'ai aussi veillé à garder une cohérence graphique et une bonne adaptation aux écrans mobiles.
 
-J'ai créé la structure du site vitrine Blanc Studio avec HTML, CSS et JavaScript. J'ai organisé les principales sections du site et la navigation sur une page.
+J'ai restauré le style de la première version sauvegardée du projet pour conserver l'identité visuelle: grand hero, galerie, cartes de services, équipe, témoignages avec logos et ambiance premium.
 
-J'ai aussi préparé les sections Accueil, Galerie, Services, Processus, Portfolio, Références et Contact.
+### Moyens utilisés
 
-J'ai travaillé sur le responsive design pour que le site soit utilisable sur mobile, tablette et ordinateur. J'ai aussi ajouté un formulaire de contact avec validation front-end.
+J'ai utilisé React, Vite, React Router, JavaScript, CSS, Visual Studio Code, le navigateur, les DevTools, Git et Docker pour la configuration de production.
 
-#### 2. Moyens utilisés
-
-J'ai utilisé HTML, CSS, JavaScript, Vite, Visual Studio Code, le navigateur, les DevTools et Git.
-
-#### 3. Avec qui j'ai travaillé
+### Avec qui j'ai travaillé
 
 J'ai travaillé principalement seule dans le cadre de ma formation. Je me suis appuyée sur le cahier des charges, la documentation officielle et les ressources pédagogiques.
 
-#### 4. Contexte
+### Difficultés rencontrées
 
-Ce projet a été réalisé dans le cadre de la formation TP Développeur Web et Web Mobile. Blanc Studio est un projet professionnel fictif de site vitrine.
-
-#### 5. Informations complémentaires
-
-Une difficulté du projet a été d'organiser les contenus pour que le site reste simple, clair et professionnel. J'ai appris à mieux structurer une page vitrine et à garder un code lisible.
+Une difficulté a été de garder le style initial du site tout en ajoutant une structure plus propre avec plusieurs pages React. J'ai aussi dû rester honnête sur les limites du projet, car il n'y a pas encore de vrai back-end.
 
 ## Activité type 2 : Développer la partie back-end d'une application web ou web mobile sécurisée
 
-Dans cette version, les données sont mockées localement. J'ai cependant organisé leur structure pour faciliter une future connexion à une API ou à une base de données.
-
-Les contenus sont placés dans le HTML pour garder un site statique simple. Cette version peut évoluer plus tard vers des fichiers JSON, une API ou une base de données.
-
-Le formulaire de contact ne fait pas de vrai envoi email. Il valide les champs côté front-end et simule l'enregistrement de la demande avec le localStorage du navigateur.
-
-## Utilisation de Docker
-
-J'ai ajouté une configuration Docker afin de montrer que le projet peut être lancé dans un environnement isolé. Le projet est construit avec Node.js, puis la version de production est servie avec Nginx.
+Dans cette version du projet, il n'y a pas de back-end réel. Les données sont organisées localement en fichiers JSON. J'ai structuré ces données pour préparer une future connexion à une API ou à une base de données. Le formulaire de contact contient une validation côté front-end et simule l'enregistrement d'une demande.
 
 ## Utilisation de Git
 
-J'ai utilisé Git pour organiser mon travail et conserver l'historique des principales étapes du projet. Les commits correspondent aux fonctionnalités importantes: création des pages, ajout du portfolio, formulaire de contact, documentation et configuration Docker.
+J'ai utilisé Git pour conserver l'historique du projet. Les commits permettent de montrer les étapes importantes: restauration du style initial, ajout des pages, amélioration du formulaire, documentation et configuration Docker.
+
+## Utilisation de Docker
+
+J'ai ajouté une configuration Docker pour montrer comment le projet peut être construit avec Node.js puis servi avec Nginx. Sur une machine limitée en mémoire RAM, Docker peut être difficile à lancer, mais les fichiers sont présents et documentés.
+
+## Améliorations possibles
+
+- Ajouter une vraie API.
+- Connecter une base de données.
+- Ajouter un espace administrateur.
+- Envoyer réellement les messages de contact.
+- Ajouter une gestion dynamique du portfolio.

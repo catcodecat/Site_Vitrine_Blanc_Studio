@@ -30,4 +30,4 @@ La page Contact contient un formulaire avec les champs suivants :
 - message ;
 - acceptation de la politique de confidentialité.
 
-Les champs nom, email, message et acceptation sont obligatoires. Après validation, un message de confirmation s'affiche.
+Les champs nom, email, message et acceptation sont obligatoires. Après validation, un message de confirmation s'affiche. L'envoi est simulé dans cette version.
