@@ -2,52 +2,29 @@
 
 ## Stack
 
-Le projet utilise React avec Vite. Le routage est fait avec React Router. Les styles sont écrits en CSS classique.
+Le projet utilise HTML, CSS et JavaScript. Vite sert à lancer le site en local et à construire une version de production.
 
 ## Architecture
 
-- `src/components` contient les composants réutilisables.
-- `src/pages` contient les pages du site.
-- `src/data` contient les données locales en JSON.
-- `src/styles/global.css` contient les styles globaux.
+- `index.html` contient la structure du site.
+- `css/style.css` contient les styles, la mise en page et le responsive.
+- `js/script.js` contient les interactions simples.
 - `public/images` contient les images servies par Vite.
+- `docs` contient les documents utiles pour l'examen.
 
-## Composants
+## Pages et sections
 
-Les principaux composants sont :
+Le site est organisé en une page vitrine avec plusieurs sections :
 
-- `Header` pour la navigation ;
-- `Footer` pour le pied de page ;
-- `Layout` pour la structure commune ;
-- `ServiceCard` pour les services ;
-- `ProjectCard` pour les projets ;
-- `ContactForm` pour le formulaire ;
-- `Button` pour les boutons et liens principaux.
+- accueil ;
+- galerie ;
+- services ;
+- processus ;
+- portfolio ;
+- références ;
+- contact.
 
-## Données
-
-Les données sont locales et mockées. Les fichiers utilisés sont :
-
-- `services.json` ;
-- `projects.json` ;
-- `testimonials.json` ;
-- `faq.json`.
-
-Dans cette version, il n'y a pas de vraie API ni de base de données.
-
-## Routage
-
-Les routes principales sont :
-
-- `/` ;
-- `/a-propos` ;
-- `/services` ;
-- `/portfolio` ;
-- `/portfolio/:projectId` ;
-- `/processus` ;
-- `/contact` ;
-- `/mentions-legales` ;
-- page 404 pour les routes inconnues.
+Ce choix garde le projet simple et proche de la première version.
 
 ## Formulaire
 
@@ -91,9 +68,16 @@ Adresse :
 http://localhost:8080
 ```
 
+Si Docker ne peut pas être installé sur la machine, la configuration reste présente dans le projet. Le site peut aussi être présenté avec :
+
+```bash
+npm run build
+npm run preview -- --port 8080
+```
+
 ## Git
 
-Le projet a été organisé avec Git afin de garder une trace des principales étapes de développement. Les commits permettent d'identifier l'ajout des pages, du portfolio, du formulaire, de la documentation et de la configuration Docker.
+Le projet a été organisé avec Git afin de garder une trace des principales étapes de développement. Les commits permettent d'identifier l'ajout du site vitrine, du formulaire, de la documentation et de la configuration Docker.
 
 ## Limites actuelles
 
@@ -104,6 +88,7 @@ Le projet a été organisé avec Git afin de garder une trace des principales é
 
 ## Améliorations futures
 
+- Ajouter plusieurs pages si le projet évolue.
 - Ajouter une API.
 - Connecter une base de données.
 - Ajouter une authentification.

@@ -2,39 +2,34 @@
 
 ## Présentation du projet
 
-Blanc Studio est un site vitrine réalisé dans le cadre d'un projet de formation pour le titre professionnel Développeur Web et Web Mobile.
+Blanc Studio est un site vitrine statique réalisé dans le cadre d'un projet de formation pour le titre professionnel Développeur Web et Web Mobile.
 
-Le site présente une studio fictif spécialisée dans le design d'intérieur, la visualisation 3D et les supports de présentation pour des projets d'architecture et d'immobilier.
+Le site présente une studio fictif spécialisée dans le design d'intérieur, la visualisation 3D, l'architecture et les supports de présentation immobilière.
 
 ## Objectif
 
-L'objectif est de présenter les services de Blanc Studio, afficher un portfolio de projets et permettre à un visiteur d'envoyer une demande de contact.
+L'objectif est de présenter les services de Blanc Studio, afficher des exemples de projets et permettre à un visiteur d'envoyer une demande de contact simulée.
 
 ## Technologies utilisées
 
-- React
-- Vite
-- React Router
-- JavaScript
+- HTML
 - CSS
-- Données locales en JSON
+- JavaScript
+- Vite pour lancer et construire le site
 - Docker avec Nginx pour servir la version de production
 
 ## Fonctionnalités
 
-- Navigation principale responsive
-- Pages séparées avec React Router
+- Navigation responsive
 - Page d'accueil avec hero
-- Présentation de la studio
-- Liste des services
-- Portfolio avec filtres par catégorie
-- Page détail pour chaque projet
-- Page processus
+- Galerie de visuels
+- Présentation des services
+- Processus de travail
+- Portfolio simple
+- Avis clients fictifs
 - Formulaire de contact avec validation front-end
 - Message de confirmation après envoi
-- Mentions légales
-- Page 404
-- Mise en page responsive mobile, tablette et desktop
+- Design responsive mobile, tablette et desktop
 
 ## Installation locale
 
@@ -43,10 +38,25 @@ npm install
 npm run dev
 ```
 
-Le projet est ensuite disponible à l'adresse indiquée par Vite, en général :
+Le projet est ensuite disponible ici :
 
 ```text
 http://localhost:5173
+```
+
+## Lancer une version de production sans Docker
+
+Si Docker n'est pas disponible sur la machine, il est possible de lancer une prévisualisation de production :
+
+```bash
+npm run build
+npm run preview -- --port 8080
+```
+
+Puis ouvrir :
+
+```text
+http://localhost:8080
 ```
 
 ## Lancer le projet avec Docker
@@ -71,54 +81,25 @@ Pour arrêter le conteneur :
 docker compose down
 ```
 
-Docker permet ici de créer un environnement d'exécution stable pour servir la version de production du site.
+Docker permet ici de créer un environnement d'exécution stable pour servir la version de production du site avec Nginx.
+
+Si Docker ne peut pas être installé sur une machine limitée en mémoire RAM, la configuration reste présente dans le projet pour montrer la méthode prévue.
 
 ## Méthode Git utilisée
 
 La méthode prévue pour ce projet est simple :
 
 - `main` contient la version stable du projet ;
-- `develop` sert au développement ;
+- `develop` peut servir au développement ;
 - les branches `feature` servent à ajouter une fonctionnalité précise ;
 - les commits sont réguliers avec des messages clairs.
 
-Exemples de commandes :
-
-```bash
-git init
-git branch -M main
-git checkout -b develop
-```
-
 Exemples de branches :
 
-- `feature/pages`
-- `feature/portfolio`
+- `feature/site-vitrine`
 - `feature/contact-form`
 - `feature/documentation`
 - `feature/docker`
-
-Exemples de commits :
-
-```bash
-git add .
-git commit -m "Initialisation du projet Blanc Studio"
-
-git add .
-git commit -m "Ajout des pages principales du site vitrine"
-
-git add .
-git commit -m "Ajout du portfolio et des données projets"
-
-git add .
-git commit -m "Ajout du formulaire de contact avec validation"
-
-git add .
-git commit -m "Ajout de la documentation du projet"
-
-git add .
-git commit -m "Ajout de la configuration Docker"
-```
 
 Commande utile pour montrer l'historique :
 
@@ -128,21 +109,21 @@ git log --oneline --graph --all
 
 ## Structure du projet
 
-- `src/components` : composants réutilisables.
-- `src/pages` : pages du site.
-- `src/data` : données locales en JSON.
-- `src/styles` : styles globaux.
-- `public/images` : images utilisées par le site.
+- `index.html` : structure principale du site.
+- `css/style.css` : mise en page, couleurs, responsive design.
+- `js/script.js` : menu mobile, animations simples et formulaire.
+- `public/images` : images utilisées par Vite.
+- `images` : dossier d'images conservé depuis la version initiale.
 - `docs` : documentation pour l'examen.
-- `Dockerfile` et `docker-compose.yml` : configuration Docker.
+- `Dockerfile`, `docker-compose.yml`, `nginx.conf` : configuration Docker.
 
 ## Données
 
-Les données sont locales et mockées en JSON. Il n'y a pas de vraie base de données dans cette version.
+Les contenus sont écrits directement dans le HTML pour garder un projet simple et proche d'un site vitrine statique.
 
 ## Accessibilité et responsive
 
-Le site utilise des balises HTML sémantiques, des labels associés aux champs du formulaire, des textes alternatifs pour les images utiles, un focus visible au clavier et une mise en page adaptée aux écrans mobiles, tablettes et desktop.
+Le site utilise une structure HTML sémantique, des labels associés aux champs du formulaire, des textes alternatifs pour les images utiles, un focus visible au clavier et une mise en page adaptée aux écrans mobiles, tablettes et desktop.
 
 ## Sécurité
 
@@ -155,9 +136,8 @@ Le site utilise des balises HTML sémantiques, des labels associés aux champs d
 
 ## Améliorations possibles
 
+- Ajouter plusieurs pages séparées.
 - Ajouter un vrai back-end.
 - Connecter une base de données.
 - Créer un espace administrateur.
-- Ajouter l'upload de projets.
-- Ajouter une authentification.
 - Envoyer réellement les messages de contact par email.
