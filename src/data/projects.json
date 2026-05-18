@@ -1,0 +1,74 @@
+[
+  {
+    "id": "appartement-haussmannien-strasbourg",
+    "title": "Appartement Haussmannien à Strasbourg",
+    "category": "Intérieur",
+    "location": "Strasbourg",
+    "year": "2025",
+    "shortDescription": "Rénovation visuelle d'un appartement ancien avec une ambiance claire et contemporaine.",
+    "longDescription": "Le projet présente un appartement haussmannien remis en valeur avec des tons doux, du mobilier sur mesure et des images 3D pour valider les choix d'ambiance avant les travaux.",
+    "services": ["Design d'intérieur", "Visualisation 3D intérieure"],
+    "image": "/images/Images_interiers/Salon_3.jpg",
+    "gallery": ["/images/Images_interiers/Salon.jpg", "/images/Images_interiers/Sejour_2.jpg"]
+  },
+  {
+    "id": "maison-contemporaine-alsace",
+    "title": "Maison contemporaine en Alsace",
+    "category": "Extérieur",
+    "location": "Alsace",
+    "year": "2025",
+    "shortDescription": "Perspectives extérieures pour présenter une maison familiale contemporaine.",
+    "longDescription": "Blanc Studio a préparé plusieurs vues 3D pour montrer l'implantation de la maison, les volumes, les matériaux et la relation avec le jardin.",
+    "services": ["Visualisation 3D extérieure", "Présentation immobilière"],
+    "image": "/images/Images_exteriers/Maison_individuele.jpg",
+    "gallery": ["/images/Images_exteriers/Villa_St_Raphael.jpg", "/images/Images_exteriers/Chalet_Alpes.jpg"]
+  },
+  {
+    "id": "studio-locatif-optimise",
+    "title": "Studio locatif optimisé",
+    "category": "Intérieur",
+    "location": "Colmar",
+    "year": "2024",
+    "shortDescription": "Aménagement compact pour améliorer le confort et la lecture des espaces.",
+    "longDescription": "Ce projet fictif montre comment un petit logement peut être rendu plus lisible grâce à une organisation simple, des rangements intégrés et des vues 3D avant réalisation.",
+    "services": ["Design d'intérieur", "Accompagnement de projet"],
+    "image": "/images/Images_interiers/Chambre.jpg",
+    "gallery": ["/images/Images_interiers/Sejour.jpg", "/images/Images_interiers/Salon_4.jpg"]
+  },
+  {
+    "id": "residence-neuve-promoteur",
+    "title": "Résidence neuve pour promoteur immobilier",
+    "category": "Immobilier",
+    "location": "Metz",
+    "year": "2024",
+    "shortDescription": "Images de présentation pour une résidence neuve destinée à la commercialisation.",
+    "longDescription": "Les visuels permettent de présenter le projet aux futurs acheteurs avec des vues extérieures, une ambiance générale et des supports adaptés à la vente.",
+    "services": ["Visualisation 3D extérieure", "Présentation immobilière"],
+    "image": "/images/Images_exteriers/Residence_Mets.jpg",
+    "gallery": ["/images/Images_exteriers/Logement_Arnas.jpg", "/images/Images_exteriers/Logement_Villefranche-sur-Saone.jpg"]
+  },
+  {
+    "id": "bureau-professionnel-renove",
+    "title": "Bureau professionnel rénové",
+    "category": "Intérieur",
+    "location": "Mulhouse",
+    "year": "2023",
+    "shortDescription": "Nouvelle ambiance pour un espace de travail plus lisible et accueillant.",
+    "longDescription": "Le bureau a été présenté avec des vues 3D simples afin de choisir les couleurs, l'éclairage, le mobilier et les zones de travail.",
+    "services": ["Design d'intérieur", "Visualisation 3D intérieure"],
+    "image": "/images/Images_interiers/Bistrot.jpg",
+    "gallery": ["/images/Images_interiers/Logement_collectif.jpg", "/images/Images_interiers/Spa_de_Luxe.jpg"]
+  },
+  {
+    "id": "cuisine-familiale-sur-mesure",
+    "title": "Cuisine familiale sur mesure",
+    "category": "Intérieur",
+    "location": "Nancy",
+    "year": "2023",
+    "shortDescription": "Simulation 3D d'une cuisine familiale avec matériaux naturels et rangements.",
+    "longDescription": "Ce projet montre une cuisine chaleureuse et pratique. Les images 3D ont servi à comparer les matériaux, la circulation et l'éclairage.",
+    "services": ["Design d'intérieur", "Accompagnement de projet"],
+    "image": "/images/Images_interiers/Sejour_3.jpg",
+    "gallery": ["/images/Images_interiers/Salon_5.png", "/images/Images_interiers/Salon_2.jpg"]
+  }
+]

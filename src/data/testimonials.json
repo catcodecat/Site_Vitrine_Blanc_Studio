@@ -1,0 +1,20 @@
+[
+  {
+    "id": "client-1",
+    "name": "Claire M.",
+    "role": "Particulier",
+    "quote": "Les visuels nous ont aidés à comprendre le projet avant de choisir les matériaux."
+  },
+  {
+    "id": "client-2",
+    "name": "Agence Horizon",
+    "role": "Immobilier",
+    "quote": "Les images étaient claires et adaptées à notre dossier de présentation."
+  },
+  {
+    "id": "client-3",
+    "name": "Atelier A.",
+    "role": "Architecte",
+    "quote": "La méthode de travail était simple, avec des retours bien intégrés."
+  }
+]

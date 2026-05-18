@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" role="img" aria-label="Architecture contemporaine minimaliste">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#f1ece4"/>
+      <stop offset="0.55" stop-color="#cfc2b2"/>
+      <stop offset="1" stop-color="#181716"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" x2="1">
+      <stop stop-color="#f8f6f1" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#6c6258" stop-opacity=".8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1800" height="1100" fill="url(#sky)"/>
+  <rect y="760" width="1800" height="340" fill="#171514"/>
+  <path d="M0 820 900 330 1800 820Z" fill="#e8dfd3"/>
+  <path d="M480 760 980 410 1510 760Z" fill="#f7f4ef"/>
+  <path d="M920 425 920 760 1510 760Z" fill="#b9a58f"/>
+  <rect x="760" y="515" width="430" height="245" fill="url(#glass)"/>
+  <rect x="820" y="570" width="120" height="190" fill="#1d1b19" opacity=".72"/>
+  <rect x="980" y="570" width="150" height="190" fill="#1d1b19" opacity=".42"/>
+  <path d="M0 830 C360 720 560 930 880 800 S1420 650 1800 760" fill="none" stroke="#f7f4ef" stroke-width="6" opacity=".35"/>
+  <circle cx="1360" cy="300" r="160" fill="#f7f4ef" opacity=".18"/>
+</svg>
