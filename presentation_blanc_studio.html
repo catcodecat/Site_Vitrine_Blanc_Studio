@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Présentation du projet - Blanc Studio</title>
+    <style>
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: #17202b;
+        background: #eef2f6;
+        font-family: Arial, Helvetica, sans-serif;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .slide {
+        position: relative;
+        width: 297mm;
+        height: 210mm;
+        overflow: hidden;
+        page-break-after: always;
+        background: #f7f9fb;
+      }
+
+      .slide:last-child {
+        page-break-after: auto;
+      }
+
+      .photo-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .veil {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(13, 20, 29, 0.86), rgba(13, 20, 29, 0.48), rgba(13, 20, 29, 0.16)),
+          linear-gradient(0deg, rgba(13, 20, 29, 0.7), transparent 58%);
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        padding: 28mm 24mm;
+      }
+
+      .cover .content {
+        color: white;
+        max-width: 178mm;
+        padding-top: 38mm;
+      }
+
+      .cover-mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 20mm;
+      }
+
+      .logo-box {
+        display: grid;
+        place-items: center;
+        width: 19mm;
+        height: 19mm;
+        border: 1px solid rgba(255, 255, 255, 0.42);
+        background: rgba(4, 6, 12, 0.72);
+      }
+
+      .logo-box img {
+        width: 15mm;
+        height: 15mm;
+        object-fit: contain;
+      }
+
+      .cover-mark strong {
+        display: block;
+        font-size: 15pt;
+      }
+
+      .cover-mark span {
+        display: block;
+        margin-top: 4px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 8pt;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 155mm;
+        font-size: 42pt;
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .subtitle {
+        max-width: 132mm;
+        margin-top: 9mm;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14pt;
+        line-height: 1.45;
+      }
+
+      .tagline {
+        margin-top: 24mm;
+        color: #d8c7ad;
+        font-size: 10pt;
+        font-weight: 800;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .kicker {
+        margin-bottom: 8mm;
+        color: #3b6ea8;
+        font-size: 9pt;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .light .kicker {
+        color: #d8c7ad;
+      }
+
+      h2 {
+        max-width: 154mm;
+        font-size: 30pt;
+        line-height: 1.12;
+      }
+
+      .intro {
+        max-width: 148mm;
+        margin-top: 8mm;
+        color: #56616f;
+        font-size: 12.5pt;
+        line-height: 1.5;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16mm;
+        align-items: center;
+        height: 100%;
+      }
+
+      .text-col {
+        padding: 22mm 0 22mm 24mm;
+      }
+
+      .image-col {
+        position: relative;
+        height: 210mm;
+        overflow: hidden;
+      }
+
+      .image-col img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .panel {
+        margin-top: 15mm;
+        display: grid;
+        gap: 7mm;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 14mm 1fr;
+        gap: 6mm;
+        align-items: start;
+      }
+
+      .num {
+        display: grid;
+        place-items: center;
+        width: 11mm;
+        height: 11mm;
+        color: white;
+        background: #17202b;
+        font-size: 9pt;
+        font-weight: 800;
+      }
+
+      .row h3 {
+        margin-bottom: 2mm;
+        font-size: 14pt;
+      }
+
+      .row p,
+      li {
+        color: #56616f;
+        font-size: 11.5pt;
+        line-height: 1.42;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8mm;
+        margin-top: 15mm;
+      }
+
+      .card {
+        min-height: 45mm;
+        padding: 8mm;
+        background: white;
+        border: 1px solid rgba(23, 32, 43, 0.12);
+        box-shadow: 0 10px 28px rgba(23, 32, 43, 0.08);
+      }
+
+      .card h3 {
+        margin-bottom: 4mm;
+        font-size: 14pt;
+      }
+
+      .card p,
+      .card li {
+        color: #586474;
+        font-size: 10.8pt;
+        line-height: 1.42;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 5mm;
+      }
+
+      .photo-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 1fr 1fr;
+        grid-template-rows: 64mm 64mm;
+        gap: 5mm;
+        margin-top: 13mm;
+      }
+
+      .photo-grid figure {
+        position: relative;
+        margin: 0;
+        overflow: hidden;
+        background: #d9e0e8;
+      }
+
+      .photo-grid figure:first-child {
+        grid-row: span 2;
+      }
+
+      .photo-grid img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      figcaption {
+        position: absolute;
+        left: 5mm;
+        bottom: 5mm;
+        padding: 2.3mm 3.5mm;
+        color: white;
+        background: rgba(13, 20, 29, 0.72);
+        font-size: 9pt;
+        font-weight: 800;
+      }
+
+      .dark {
+        color: white;
+        background: #101821;
+      }
+
+      .dark h2,
+      .dark h3 {
+        color: white;
+      }
+
+      .dark .intro,
+      .dark .row p,
+      .dark li {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .dark .card {
+        background: #172230;
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .dark .card p,
+      .dark .card li {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .tech {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8mm;
+        margin-top: 14mm;
+      }
+
+      .tech .card {
+        min-height: 64mm;
+      }
+
+      .code-box {
+        margin-top: 13mm;
+        padding: 8mm;
+        color: #d9e8ff;
+        background: #0b1118;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 11pt;
+        line-height: 1.55;
+      }
+
+      .footer-note {
+        position: absolute;
+        left: 24mm;
+        right: 24mm;
+        bottom: 13mm;
+        display: flex;
+        justify-content: space-between;
+        color: #8b96a6;
+        font-size: 8.5pt;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .dark .footer-note,
+      .cover .footer-note {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="slide cover">
+      <img class="photo-bg" src="file:///C:/Users/sakra/OneDrive/Images/Bureau/Site_Vitrine_Blanc_Studio/images/image_fond_hero.jpg" alt="" />
+      <div class="veil"></div>
+      <div class="content">
+        <div class="cover-mark">
+          <div class="logo-box">
+            <img src="file:///C:/Users/sakra/OneDrive/Images/Bureau/Site_Vitrine_Blanc_Studio/images/logo_blanc_studio.png" alt="" />
+          </div>
+          <div>
+            <strong>Blanc Studio</strong>
+            <span>Visualisation architecturale</span>
+          </div>
+        </div>
+        <h1>Présentation du projet web</h1>
+        <p class="subtitle">
+          Transformation d'un besoin client en site vitrine moderne, responsive et cohérent visuellement.
+        </p>
+        <p class="tagline">Mini présentation pour la première soumission</p>
+      </div>
+      <div class="footer-note"><span>Projet Blanc Studio</span><span>01</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="two-col">
+        <div class="text-col">
+          <p class="kicker">01 - Présentation du projet</p>
+          <h2>Un site vitrine pour un studio de visualisation architecturale.</h2>
+          <p class="intro">
+            Le projet présente les services, les réalisations et l'identité de Blanc Studio, une équipe spécialisée dans les images 3D, les concepts IA et les expériences immersives pour l'architecture et l'immobilier.
+          </p>
+          <div class="panel">
+            <div class="row">
+              <span class="num">1</span>
+              <div><h3>Domaine</h3><p>Architecture, immobilier, design intérieur, rendu 3D et supports de vente.</p></div>
+            </div>
+            <div class="row">
+              <span class="num">2</span>
+              <div><h3>Objectif du site</h3><p>Mettre en valeur le studio, rassurer les clients et faciliter la prise de contact.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="image-col">
+          <img src="file:///C:/Users/sakra/OneDrive/Images/Bureau/Site_Vitrine_Blanc_Studio/images/Images_exteriers/Beach-club-Mandelieu.jpg" alt="" />
+        </div>
+      </div>
+      <div class="footer-note"><span>Présentation du projet</span><span>02</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="content">
+        <p class="kicker">02 - Nom du projet</p>
+        <h2>Blanc Studio : une identité simple, premium et architecturale.</h2>
+        <p class="intro">
+          Le nom évoque la clarté, la lumière, les espaces purs et la précision visuelle. Il correspond à l'univers du site : élégant, professionnel et centré sur l'image architecturale.
+        </p>
+        <div class="grid">
+          <article class="card">
+            <h3>Blanc</h3>
+            <p>Référence à la lumière, à la pureté des formes et à une présentation visuelle claire.</p>
+          </article>
+          <article class="card">
+            <h3>Studio</h3>
+            <p>Montre une activité créative et professionnelle, avec une équipe et une méthode de travail.</p>
+          </article>
+          <article class="card">
+            <h3>Image de marque</h3>
+            <p>Le logo sombre et minimaliste renforce une perception moderne, technique et haut de gamme.</p>
+          </article>
+        </div>
+      </div>
+      <div class="footer-note"><span>Nom du projet</span><span>03</span></div>
+    </section>
+
+    <section class="slide dark">
+      <div class="content">
+        <p class="kicker">03 - Besoin du client</p>
+        <h2>Rendre les projets visibles avant leur réalisation.</h2>
+        <p class="intro">
+          Le client avait besoin d'un site capable de présenter ses services, montrer la qualité des rendus et transformer les visiteurs en contacts commerciaux.
+        </p>
+        <div class="grid">
+          <article class="card">
+            <h3>Presenter les services</h3>
+            <p>Perspectives extérieures, visualisation intérieure, animation 3D, VR, concepts IA et supports de vente.</p>
+          </article>
+          <article class="card">
+            <h3>Attirer des clients</h3>
+            <p>Le site s'adresse aux promoteurs, architectes, agences et investisseurs qui ont besoin d'images convaincantes.</p>
+          </article>
+          <article class="card">
+            <h3>Ameliorer l'image</h3>
+            <p>Une interface moderne et responsive donne une impression professionnelle sur ordinateur, tablette et mobile.</p>
+          </article>
+        </div>
+      </div>
+      <div class="footer-note"><span>Besoin du client</span><span>04</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="content">
+        <p class="kicker">04 - Utilisateurs du site</p>
+        <h2>Un public cible professionnel, mais une navigation accessible.</h2>
+        <p class="intro">
+          Les utilisateurs veulent comprendre rapidement l'offre, évaluer la qualité visuelle du studio et trouver un moyen simple de prendre contact.
+        </p>
+        <div class="grid">
+          <article class="card">
+            <h3>Promoteurs immobiliers</h3>
+            <p>Ils recherchent des images pour vendre un programme avant construction.</p>
+          </article>
+          <article class="card">
+            <h3>Architectes et agences</h3>
+            <p>Ils ont besoin de supports visuels pour présenter leurs intentions et convaincre leurs clients.</p>
+          </article>
+          <article class="card">
+            <h3>Clients et investisseurs</h3>
+            <p>Ils consultent la galerie, les références et les services pour se projeter dans le projet.</p>
+          </article>
+        </div>
+      </div>
+      <div class="footer-note"><span>Utilisateurs</span><span>05</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="content">
+        <p class="kicker">05 - Composition du site</p>
+        <h2>Une page unique structurée en sections claires.</h2>
+        <p class="intro">
+          Le site fonctionne comme une landing page complète : l'utilisateur descend progressivement de la découverte vers la preuve, puis vers le contact.
+        </p>
+        <div class="photo-grid">
+          <figure>
+            <img src="file:///C:/Users/sakra/OneDrive/Images/Bureau/Site_Vitrine_Blanc_Studio/images/Images_exteriers/Chalet_Alpes.jpg" alt="" />
+            <figcaption>Galerie</figcaption>
+          </figure>
+          <figure>
+            <img src="file:///C:/Users/sakra/OneDrive/Images/Bureau/Site_Vitrine_Blanc_Studio/images/Images_interiers/Sejour_2.jpg" alt="" />
+            <figcaption>Intérieurs</figcaption>
+          </figure>
+          <figure>
+            <img src="file:///C:/Users/sakra/OneDrive/Images/Bureau/Site_Vitrine_Blanc_Studio/images/Images_exteriers/Logement_Arnas.jpg" alt="" />
+            <figcaption>Projets</figcaption>
+          </figure>
+          <figure>
+            <img src="file:///C:/Users/sakra/OneDrive/Images/Bureau/Site_Vitrine_Blanc_Studio/images/Images_exteriers/Beach-club-Mandelieu.jpg" alt="" />
+            <figcaption>Services</figcaption>
+          </figure>
+          <figure>
+            <img src="file:///C:/Users/sakra/OneDrive/Images/Bureau/Site_Vitrine_Blanc_Studio/images/image_fond_hero.jpg" alt="" />
+            <figcaption>Hero</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="footer-note"><span>Composition du site</span><span>06</span></div>
+    </section>
+
+    <section class="slide dark">
+      <div class="content">
+        <p class="kicker">06 - Outils utilisés</p>
+        <h2>Des technologies simples pour un site clair, responsive et interactif.</h2>
+        <div class="tech">
+          <article class="card">
+            <h3>Langages et technologies</h3>
+            <ul>
+              <li>HTML pour la structure de la page.</li>
+              <li>CSS pour la mise en page, les couleurs, le responsive design et les animations.</li>
+              <li>JavaScript pour le menu mobile, les animations au scroll et le formulaire.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Outils de creation</h3>
+            <ul>
+              <li>VS Code pour coder et organiser les fichiers.</li>
+              <li>Figma pour préparer l'esprit visuel et la présentation.</li>
+              <li>Git / GitHub pour suivre les versions du projet.</li>
+              <li>Images et rendus 3D pour valoriser le contenu.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+      <div class="footer-note"><span>Outils utilisés</span><span>07</span></div>
+    </section>
+
+    <section class="slide dark">
+      <div class="content">
+        <p class="kicker">07 - Structure HTML utilisée</p>
+        <h2>Une structure sémantique facile à comprendre et à maintenir.</h2>
+        <p class="intro">
+          La page utilise des balises principales pour séparer clairement les zones du site et améliorer la lisibilité du code.
+        </p>
+        <div class="code-box">
+&lt;header class="site-header"&gt;<br />
+&nbsp;&nbsp;&lt;nav class="main-nav"&gt;...&lt;/nav&gt;<br />
+&lt;/header&gt;<br />
+&lt;main&gt;<br />
+&nbsp;&nbsp;&lt;section id="accueil"&gt;Hero&lt;/section&gt;<br />
+&nbsp;&nbsp;&lt;section id="galerie"&gt;Galerie&lt;/section&gt;<br />
+&nbsp;&nbsp;&lt;section id="services"&gt;Services&lt;/section&gt;<br />
+&nbsp;&nbsp;&lt;section id="processus"&gt;Processus&lt;/section&gt;<br />
+&nbsp;&nbsp;&lt;section id="contact"&gt;Formulaire&lt;/section&gt;<br />
+&lt;/main&gt;<br />
+&lt;footer class="site-footer"&gt;...&lt;/footer&gt;
+        </div>
+      </div>
+      <div class="footer-note"><span>Structure HTML</span><span>08</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="two-col">
+        <div class="text-col">
+          <p class="kicker">08 - Conclusion</p>
+          <h2>Le projet répond au besoin client avec une expérience visuelle moderne.</h2>
+          <p class="intro">
+            Blanc Studio transforme une demande professionnelle en site web attractif, responsive et cohérent. La galerie, les services, les références et le formulaire guident le visiteur vers une prise de contact claire.
+          </p>
+          <div class="panel">
+            <div class="row">
+              <span class="num">+</span>
+              <div><h3>Résultat</h3><p>Un site vitrine esthétique, structuré et adapté à la présentation de services premium.</p></div>
+            </div>
+            <div class="row">
+              <span class="num">+</span>
+              <div><h3>Apprentissage</h3><p>Le projet montre l'utilisation combinée du HTML, du CSS, du JavaScript et d'une logique de design responsive.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="image-col">
+          <img src="file:///C:/Users/sakra/OneDrive/Images/Bureau/Site_Vitrine_Blanc_Studio/images/Images_exteriers/Logement_Arnas.jpg" alt="" />
+        </div>
+      </div>
+      <div class="footer-note"><span>Conclusion</span><span>09</span></div>
+    </section>
+  </body>
+</html>
