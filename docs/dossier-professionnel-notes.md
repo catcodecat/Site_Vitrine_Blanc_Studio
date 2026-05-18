@@ -22,7 +22,9 @@ Une difficulté a été de garder le style initial du site tout en ajoutant une 
 
 ## Activité type 2 : Développer la partie back-end d'une application web ou web mobile sécurisée
 
-Dans cette version du projet, il n'y a pas de back-end réel. Les données sont organisées localement en fichiers JSON. J'ai structuré ces données pour préparer une future connexion à une API ou à une base de données. Le formulaire de contact contient une validation côté front-end et simule l'enregistrement d'une demande.
+Dans cette version du projet, j'ai ajouté un back-end simple avec Node.js et Express. Les données de contenu sont organisées localement en fichiers JSON. Le formulaire de contact contient une validation côté front-end et côté back-end, puis les demandes sont enregistrées dans un fichier `messages.jsonl`.
+
+Il n'y a pas encore de vraie base de données ni d'envoi réel d'email. J'ai gardé cette limite volontairement pour rester sur un projet clair et réaliste.
 
 ## Utilisation de Git
 
@@ -30,7 +32,7 @@ J'ai utilisé Git pour conserver l'historique du projet. Les commits permettent 
 
 ## Utilisation de Docker
 
-J'ai ajouté une configuration Docker pour montrer comment le projet peut être construit avec Node.js puis servi avec Nginx. Sur une machine limitée en mémoire RAM, Docker peut être difficile à lancer, mais les fichiers sont présents et documentés.
+J'ai ajouté une configuration Docker pour montrer comment le front-end peut être construit avec Node.js puis servi avec Nginx, et comment l'API Express peut fonctionner dans un deuxième service. Sur une machine limitée en mémoire RAM, Docker peut être difficile à lancer, mais les fichiers sont présents et documentés.
 
 ## Améliorations possibles
 

@@ -2,7 +2,7 @@
 
 ## Stack
 
-Le projet utilise React, Vite, React Router, JavaScript et CSS.
+Le projet utilise React, Vite, React Router, JavaScript, CSS et un petit back-end Node.js avec Express.
 
 ## Architecture
 
@@ -27,7 +27,9 @@ Les routes principales sont :
 
 ## Données
 
-Dans cette version, les données sont mockées localement en JSON. Le formulaire de contact simule l'envoi et peut enregistrer les informations localement. Une future version pourrait être connectée à une API et à une base de données.
+Dans cette version, les données de contenu sont mockées localement en JSON. Le formulaire de contact utilise une API Express simple et les demandes sont enregistrées dans `data/messages.jsonl`.
+
+Il n'y a pas encore de vraie base de données. Une future version pourrait connecter l'API à une base de données.
 
 ## Formulaire
 
@@ -41,7 +43,7 @@ Le formulaire contient :
 - message ;
 - acceptation de la politique de confidentialité.
 
-La validation est faite côté front-end. Le formulaire n'envoie pas de vrai email.
+La validation est faite côté front-end et côté back-end. Le formulaire n'envoie pas de vrai email.
 
 ## Style visuel
 
@@ -52,6 +54,7 @@ Le style a été restauré à partir de la version sauvegardée du projet. Les �
 Le projet possède une configuration Docker :
 
 - `Dockerfile`
+- `Dockerfile.api`
 - `docker-compose.yml`
 - `.dockerignore`
 - `nginx.conf`
@@ -89,7 +92,7 @@ Git est utilisé pour conserver l'historique des principales étapes du projet. 
 
 ## Limites actuelles
 
-- Pas de vrai back-end.
+- Back-end volontairement simple.
 - Pas de base de données.
 - Pas d'envoi réel d'email.
 - Données mockées localement.

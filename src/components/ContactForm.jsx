@@ -45,7 +45,7 @@ function ContactForm() {
     return nextErrors;
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const nextErrors = validate();
     setErrors(nextErrors);
@@ -55,12 +55,34 @@ function ContactForm() {
       return;
     }
 
-    const savedRequests = JSON.parse(localStorage.getItem("blancStudioRequests") || "[]");
-    savedRequests.push({ ...values, createdAt: new Date().toISOString() });
-    localStorage.setItem("blancStudioRequests", JSON.stringify(savedRequests));
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
-    setValues(initialValues);
-    setStatus("Votre demande a bien été enregistrée. Blanc Studio vous répondra prochainement.");
+      const result = await response.json();
+
+      if (!response.ok) {
+        setStatus(result.message || "Le message n'a pas pu être enregistré.");
+        return;
+      }
+
+      setValues(initialValues);
+      setStatus(result.message);
+    } catch (error) {
+      const savedRequests = JSON.parse(localStorage.getItem("blancStudioRequests") || "[]");
+      savedRequests.push({ ...values, createdAt: new Date().toISOString(), mode: "local" });
+      localStorage.setItem("blancStudioRequests", JSON.stringify(savedRequests));
+
+      setValues(initialValues);
+      setStatus(
+        "Le serveur n'est pas disponible. La demande a été enregistrée localement dans le navigateur.",
+      );
+    }
   }
 
   return (

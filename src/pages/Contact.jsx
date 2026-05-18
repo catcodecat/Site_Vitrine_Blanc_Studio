@@ -1,5 +1,4 @@
 import ContactForm from "../components/ContactForm.jsx";
-import faq from "../data/faq.json";
 
 function Contact() {
   return (
@@ -18,14 +17,6 @@ function Contact() {
           </div>
         </div>
         <ContactForm />
-      </div>
-      <div className="faq-list">
-        {faq.map((item) => (
-          <article key={item.question}>
-            <h2>{item.question}</h2>
-            <p>{item.answer}</p>
-          </article>
-        ))}
       </div>
     </section>
   );

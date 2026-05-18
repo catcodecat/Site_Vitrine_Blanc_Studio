@@ -1,7 +1,18 @@
 services:
+  blanc-studio-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: blanc-studio-api
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+
   blanc-studio:
     build: .
     container_name: blanc-studio
     ports:
       - "8080:80"
+    depends_on:
+      - blanc-studio-api
     restart: unless-stopped

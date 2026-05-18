@@ -18,6 +18,7 @@ L'objectif est de présenter les services de Blanc Studio, afficher un portfolio
 - JavaScript
 - CSS
 - Données locales en JSON
+- Back-end simple avec Node.js et Express
 - Docker et Nginx pour servir la version de production
 
 ## Fonctionnalités
@@ -28,7 +29,8 @@ L'objectif est de présenter les services de Blanc Studio, afficher un portfolio
 - Portfolio filtrable par catégorie.
 - Page détail projet.
 - Formulaire de contact avec validation front-end.
-- Sauvegarde simulée de la demande dans le localStorage.
+- Enregistrement des demandes avec une API Express simple.
+- Sauvegarde locale dans le navigateur si le serveur API n'est pas lancé.
 - Témoignages avec quatre logos/icônes clients.
 - Responsive mobile, tablette et desktop.
 
@@ -43,6 +45,18 @@ Puis ouvrir :
 
 ```text
 http://localhost:5173
+```
+
+Pour tester le back-end en local, ouvrir un deuxième terminal :
+
+```bash
+npm run backend
+```
+
+L'API est disponible ici :
+
+```text
+http://localhost:3001/api/health
 ```
 
 ## Lancer une version de production sans Docker
@@ -113,9 +127,9 @@ git log --oneline --graph --all
 - `docs` : documentation pour l'examen.
 - `Dockerfile`, `docker-compose.yml`, `.dockerignore`, `nginx.conf` : configuration Docker.
 
-## Données mockées
+## Données et back-end
 
-Dans cette version, les données sont mockées localement en JSON. Le formulaire de contact simule l'envoi et peut enregistrer les informations localement. Une future version pourrait être connectée à une API et à une base de données.
+Dans cette version, les données de contenu sont mockées localement en JSON. Le formulaire de contact utilise une petite API Express qui enregistre les demandes dans `data/messages.jsonl`. Il n'y a pas encore de vraie base de données ni d'envoi email.
 
 ## Accessibilité et responsive
 
@@ -123,7 +137,6 @@ Le site utilise des balises sémantiques, des textes alternatifs sur les images 
 
 ## Limites
 
-- Pas de vrai back-end.
 - Pas de vraie base de données.
 - Pas d'envoi réel d'email.
 - Pas d'espace administrateur.
