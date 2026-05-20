@@ -59,6 +59,31 @@ L'API est disponible ici :
 http://localhost:3001/api/health
 ```
 
+## Vérification du back-end
+
+Le back-end est développé avec Express dans le fichier `server/server.js`.
+Il se lance depuis la racine du projet avec la commande :
+
+```bash
+npm run backend
+```
+
+Une fois le serveur lancé, l'API écoute sur le port 3001.
+
+La route de test est :
+
+```text
+http://127.0.0.1:3001/api/health
+```
+
+Réponse attendue :
+
+```json
+{ "ok": true, "service": "blanc-studio-api" }
+```
+
+Cette route permet de vérifier que le serveur Express fonctionne correctement.
+
 ## Lancer une version de production sans Docker
 
 Si Docker n'est pas disponible sur la machine :

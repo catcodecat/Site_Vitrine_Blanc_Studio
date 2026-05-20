@@ -31,6 +31,31 @@ Dans cette version, les données de contenu sont mockées localement en JSON. Le
 
 Il n'y a pas encore de vraie base de données. Une future version pourrait connecter l'API à une base de données.
 
+## Vérification du back-end
+
+Le back-end est développé avec Express dans le fichier `server/server.js`.
+Il se lance depuis la racine du projet avec la commande :
+
+```bash
+npm run backend
+```
+
+Une fois le serveur lancé, l'API écoute sur le port 3001.
+
+La route de test est :
+
+```text
+http://127.0.0.1:3001/api/health
+```
+
+Réponse attendue :
+
+```json
+{ "ok": true, "service": "blanc-studio-api" }
+```
+
+Cette route permet de vérifier que le serveur Express fonctionne correctement.
+
 ## Formulaire
 
 Le formulaire contient :
