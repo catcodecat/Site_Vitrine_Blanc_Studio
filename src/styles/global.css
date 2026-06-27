@@ -959,6 +959,129 @@ dd {
   background: var(--accent);
 }
 
+.admin-page {
+  background: var(--page-bg);
+}
+
+.admin-login {
+  display: grid;
+  gap: 12px;
+  max-width: 720px;
+  margin-bottom: 32px;
+}
+
+.admin-login div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+}
+
+.admin-login input,
+.admin-detail input,
+.admin-detail select,
+.admin-detail textarea {
+  color: var(--text);
+  background: var(--white);
+  border-color: var(--line);
+}
+
+.admin-dashboard {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.15fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.admin-list,
+.admin-detail {
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 48px rgba(20, 27, 38, 0.08);
+}
+
+.admin-list {
+  display: grid;
+  gap: 14px;
+}
+
+.admin-list .filter-bar {
+  margin-bottom: 8px;
+}
+
+.message-preview {
+  display: grid;
+  gap: 7px;
+  width: 100%;
+  padding: 18px;
+  color: var(--text);
+  text-align: left;
+  background: #f6f8fb;
+  border: 1px solid var(--line);
+  cursor: pointer;
+}
+
+.message-preview:hover,
+.message-preview.active {
+  border-color: var(--accent);
+  background: #eef4fb;
+}
+
+.message-preview small,
+.message-preview span:last-child,
+.admin-detail p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.status-badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 5px 9px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 800;
+  background: #e9eef4;
+  border: 1px solid var(--line);
+}
+
+.status-new {
+  color: #ffffff;
+  background: #3b6ea8;
+}
+
+.status-read {
+  background: #dbe7f4;
+}
+
+.status-processed {
+  background: #d8c7ad;
+}
+
+.status-replied {
+  color: #ffffff;
+  background: #203349;
+}
+
+.admin-detail {
+  display: grid;
+  gap: 18px;
+}
+
+.admin-detail h2 {
+  margin-top: 10px;
+  font-size: clamp(28px, 4vw, 48px);
+}
+
+.admin-detail dl {
+  margin-top: 0;
+}
+
+.admin-detail dd {
+  color: var(--text);
+  line-height: 1.65;
+}
+
 .faq-list {
   display: grid;
   gap: 16px;
@@ -1132,6 +1255,7 @@ dd {
   .team-grid,
   .client-grid,
   .portfolio-grid,
+  .admin-dashboard,
   .contact-panel,
   .about-panel,
   .project-detail,
@@ -1160,6 +1284,10 @@ dd {
 
   .cta-band .btn {
     width: 100%;
+  }
+
+  .admin-login div {
+    grid-template-columns: 1fr;
   }
 }
 

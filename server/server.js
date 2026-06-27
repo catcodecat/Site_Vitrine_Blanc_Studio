@@ -12,6 +12,7 @@ const projectRoot = path.resolve(__dirname, "..");
 const dataDir = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : path.join(projectRoot, "data");
 const messagesFile = path.join(dataDir, "messages.jsonl");
 const contactAttempts = new Map();
+const adminPassword = process.env.ADMIN_PASSWORD || "";
 
 app.use(express.json({ limit: "20kb" }));
 
@@ -95,6 +96,26 @@ function isRateLimited(request) {
   return attempts.length > maxAttempts;
 }
 
+function requireAdmin(request, response, next) {
+  if (!adminPassword) {
+    response.status(503).json({
+      ok: false,
+      message: "ADMIN_PASSWORD doit être défini pour accéder à l'espace administrateur.",
+    });
+    return;
+  }
+
+  if (request.get("x-admin-password") !== adminPassword) {
+    response.status(401).json({
+      ok: false,
+      message: "Mot de passe administrateur incorrect.",
+    });
+    return;
+  }
+
+  next();
+}
+
 app.get("/api/health", (request, response) => {
   response.json({ ok: true, service: "blanc-studio-api" });
 });
@@ -156,6 +177,51 @@ app.post("/api/contact", (request, response) => {
     id: savedMessage.id,
     message: "Votre demande a bien été enregistrée. Blanc Studio vous répondra prochainement.",
   });
+});
+
+app.get("/api/admin/messages", requireAdmin, (request, response) => {
+  const messages = readMessages().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  response.json({ ok: true, messages });
+});
+
+app.get("/api/admin/messages/:id", requireAdmin, (request, response) => {
+  const message = readMessages().find((item) => item.id === request.params.id);
+
+  if (!message) {
+    response.status(404).json({ ok: false, message: "Message introuvable." });
+    return;
+  }
+
+  response.json({ ok: true, message });
+});
+
+app.patch("/api/admin/messages/:id", requireAdmin, (request, response) => {
+  const messages = readMessages();
+  const messageIndex = messages.findIndex((item) => item.id === request.params.id);
+
+  if (messageIndex === -1) {
+    response.status(404).json({ ok: false, message: "Message introuvable." });
+    return;
+  }
+
+  const status = request.body.status ? normalizeStatus(request.body.status) : messages[messageIndex].status;
+  const adminComment =
+    request.body.adminComment === undefined
+      ? messages[messageIndex].adminComment
+      : cleanText(request.body.adminComment, 1000);
+  const now = new Date().toISOString();
+
+  messages[messageIndex] = {
+    ...messages[messageIndex],
+    status,
+    adminComment,
+    updatedAt: now,
+    repliedAt: status === "replied" ? messages[messageIndex].repliedAt || now : null,
+  };
+
+  writeMessages(messages);
+
+  response.json({ ok: true, message: messages[messageIndex] });
 });
 
 app.locals.messages = {

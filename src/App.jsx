@@ -8,6 +8,7 @@ import ProjectDetail from "./pages/ProjectDetail.jsx";
 import Process from "./pages/Process.jsx";
 import Contact from "./pages/Contact.jsx";
 import Legal from "./pages/Legal.jsx";
+import Admin from "./pages/Admin.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="portfolio/:projectId" element={<ProjectDetail />} />
         <Route path="processus" element={<Process />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="admin" element={<Admin />} />
         <Route path="mentions-legales" element={<Legal />} />
         <Route path="*" element={<NotFound />} />
       </Route>
