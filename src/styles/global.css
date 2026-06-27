@@ -862,6 +862,14 @@ textarea:focus {
   margin-top: 4px;
 }
 
+.honeypot-field {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .field-error {
   color: #ffb2a9;
   font-size: 14px;
