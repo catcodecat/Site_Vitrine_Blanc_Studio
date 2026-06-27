@@ -1,6 +1,12 @@
+import Seo from "../components/Seo.jsx";
+
 function Process() {
   return (
     <section className="process section page">
+      <Seo
+        title="Processus"
+        description="Découvrez la méthode Blanc Studio: brief, réception des documents, modélisation, previews, corrections et livraison des rendus finaux."
+      />
       <div className="section-heading reveal">
         <p className="eyebrow">Processus</p>
         <h1>Une méthode claire, de l'idée à l'image finale.</h1>

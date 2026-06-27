@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ServiceCard from "../components/ServiceCard.jsx";
 import ProjectCard from "../components/ProjectCard.jsx";
+import Seo from "../components/Seo.jsx";
 import Testimonials from "../components/Testimonials.jsx";
 import services from "../data/services.json";
 import projects from "../data/projects.json";
@@ -9,6 +10,10 @@ import team from "../data/team.json";
 function Home() {
   return (
     <>
+      <Seo
+        title="Visualisations 3D, IA et design intérieur"
+        description="Blanc Studio crée des images 3D photoréalistes, concepts IA, animations et supports de vente pour architectes, promoteurs et projets d'intérieur."
+      />
       <section className="hero">
         <div className="hero-media" aria-hidden="true">
           <img src="/images/image_fond_hero.jpg" alt="" />
@@ -48,19 +53,19 @@ function Home() {
 
         <div className="gallery-grid">
           <article className="gallery-item large reveal">
-            <img src="/images/Images_exteriers/Chalet_Alpes.jpg" alt="Chalet haut de gamme en montagne" />
+            <img src="/images/Images_exteriers/Chalet_Alpes.jpg" alt="Chalet haut de gamme en montagne" loading="lazy" />
             <span>Extérieurs</span>
           </article>
           <article className="gallery-item reveal">
-            <img src="/images/Images_interiers/Salon.jpg" alt="Salon contemporain photoréaliste" />
+            <img src="/images/Images_interiers/Salon.jpg" alt="Salon contemporain photoréaliste" loading="lazy" />
             <span>Intérieurs</span>
           </article>
           <article className="gallery-item reveal">
-            <img src="/images/Images_AI/image_ai_2.png" alt="Concept architectural créé avec IA" />
+            <img src="/images/Images_AI/image_ai_2.png" alt="Concept architectural créé avec IA" loading="lazy" />
             <span>Concepts IA</span>
           </article>
           <article className="gallery-item wide reveal">
-            <img src="/images/Images_exteriers/Logement_Villefranche-sur-Saone_2.jpg" alt="Projet immobilier résidentiel" />
+            <img src="/images/Images_exteriers/Logement_Villefranche-sur-Saone_2.jpg" alt="Projet immobilier résidentiel" loading="lazy" />
             <span>Programmes immobiliers</span>
           </article>
         </div>
@@ -82,25 +87,25 @@ function Home() {
           <article>
             <h3>Extérieurs</h3>
             <div>
-              <img src="/images/Images_exteriers/Beach-club-Mandelieu.jpg" alt="Beach club à Mandelieu" />
-              <img src="/images/Images_exteriers/Logement_Arnas.jpg" alt="Logement à Arnas" />
-              <img src="/images/Images_exteriers/Villa_St_Raphael.jpg" alt="Villa à Saint-Raphaël" />
+              <img src="/images/Images_exteriers/Beach-club-Mandelieu.jpg" alt="Beach club à Mandelieu" loading="lazy" />
+              <img src="/images/Images_exteriers/Logement_Arnas.jpg" alt="Logement à Arnas" loading="lazy" />
+              <img src="/images/Images_exteriers/Villa_St_Raphael.jpg" alt="Villa à Saint-Raphaël" loading="lazy" />
             </div>
           </article>
           <article>
             <h3>Intérieurs</h3>
             <div>
-              <img src="/images/Images_interiers/Chambre.jpg" alt="Chambre contemporaine" />
-              <img src="/images/Images_interiers/Salon_3.jpg" alt="Salon lumineux" />
-              <img src="/images/Images_interiers/Sejour_2.jpg" alt="Séjour contemporain" />
+              <img src="/images/Images_interiers/Chambre.jpg" alt="Chambre contemporaine" loading="lazy" />
+              <img src="/images/Images_interiers/Salon_3.jpg" alt="Salon lumineux" loading="lazy" />
+              <img src="/images/Images_interiers/Sejour_2.jpg" alt="Séjour contemporain" loading="lazy" />
             </div>
           </article>
           <article>
             <h3>Images IA</h3>
             <div>
-              <img src="/images/Images_AI/image_ai_2.png" alt="Concept IA architectural" />
-              <img src="/images/Images_AI/image_ai_4.png" alt="Concept IA intérieur" />
-              <img src="/images/Image_AI.png" alt="Concept IA premium" />
+              <img src="/images/Images_AI/image_ai_2.png" alt="Concept IA architectural" loading="lazy" />
+              <img src="/images/Images_AI/image_ai_4.png" alt="Concept IA intérieur" loading="lazy" />
+              <img src="/images/Image_AI.png" alt="Concept IA premium" loading="lazy" />
             </div>
           </article>
         </div>
@@ -166,7 +171,7 @@ function Home() {
         <div className="team-grid">
           {team.map((person) => (
             <article className="team-card reveal" key={person.name}>
-              <img src={person.image} alt={`Portrait de ${person.name}`} />
+              <img src={person.image} alt={`Portrait de ${person.name}`} loading="lazy" />
               <h3>{person.name}</h3>
               <p>{person.description}</p>
             </article>

@@ -1,6 +1,9 @@
+import Seo from "../components/Seo.jsx";
+
 function Legal() {
   return (
     <section className="section page legal-page">
+      <Seo title="Mentions légales" description="Mentions légales et traitement des données personnelles pour le site Blanc Studio." />
       <p className="eyebrow">Mentions légales</p>
       <h1>Mentions légales</h1>
       <p>

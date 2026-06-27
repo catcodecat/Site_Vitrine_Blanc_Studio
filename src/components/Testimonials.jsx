@@ -21,7 +21,7 @@ function Testimonials() {
             key={testimonial.id}
             onClick={() => setSelectedId(testimonial.id)}
           >
-            <img src={testimonial.logo} alt={`Logo ${testimonial.company}`} />
+            <img src={testimonial.logo} alt={`Logo ${testimonial.company}`} loading="lazy" />
             <span>{testimonial.company}</span>
           </button>
         ))}

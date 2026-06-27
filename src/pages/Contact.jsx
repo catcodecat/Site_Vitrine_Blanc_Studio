@@ -1,8 +1,13 @@
 import ContactForm from "../components/ContactForm.jsx";
+import Seo from "../components/Seo.jsx";
 
 function Contact() {
   return (
     <section className="contact section page">
+      <Seo
+        title="Contact"
+        description="Contactez Blanc Studio pour une demande de visualisation 3D, animation, concept IA, visite virtuelle ou accompagnement design intérieur."
+      />
       <div className="contact-panel reveal">
         <div>
           <p className="eyebrow">Contact</p>

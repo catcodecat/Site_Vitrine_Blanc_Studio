@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import Seo from "../components/Seo.jsx";
 
 const statuses = {
   new: "Nouveau",
@@ -98,6 +99,7 @@ function Admin() {
 
   return (
     <section className="admin-page section page">
+      <Seo title="Administration" description="Espace administrateur Blanc Studio." noIndex />
       <div className="section-heading reveal">
         <p className="eyebrow">Administration</p>
         <h1>Messages entrants</h1>

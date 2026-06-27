@@ -26,11 +26,11 @@ function Header() {
       <button
         className="menu-toggle"
         type="button"
-        aria-label="Ouvrir le menu"
+        aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
         aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
       >
-        Menu
+        {isOpen ? "Fermer" : "Menu"}
       </button>
 
       <nav className={isOpen ? "main-nav is-open" : "main-nav"} aria-label="Navigation principale">

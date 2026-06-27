@@ -1335,6 +1335,10 @@ dd {
     font-weight: 800;
   }
 
+  .menu-toggle[aria-expanded="true"]::before {
+    content: "Fermer";
+  }
+
   .hero-content p:not(.eyebrow) {
     font-size: 16px;
   }

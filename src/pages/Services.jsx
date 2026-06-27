@@ -1,9 +1,14 @@
 import ServiceCard from "../components/ServiceCard.jsx";
+import Seo from "../components/Seo.jsx";
 import services from "../data/services.json";
 
 function Services() {
   return (
     <section className="services section page">
+      <Seo
+        title="Services de visualisation 3D"
+        description="Perspectives extérieures, visualisation intérieure, animation 3D, visites virtuelles, concepts IA et supports de vente pour projets immobiliers."
+      />
       <div className="section-heading reveal">
         <p className="eyebrow">Services</p>
         <h1>Une offre complète pour présenter les projets avec impact.</h1>

@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import ProjectCard from "../components/ProjectCard.jsx";
+import Seo from "../components/Seo.jsx";
 import projects from "../data/projects.json";
 
 function Portfolio() {
@@ -13,6 +14,10 @@ function Portfolio() {
 
   return (
     <section className="section page portfolio-preview">
+      <Seo
+        title="Portfolio"
+        description="Portfolio Blanc Studio: exemples de visualisations 3D intérieures, extérieures, programmes immobiliers et concepts IA."
+      />
       <div className="section-heading reveal">
         <p className="eyebrow">Portfolio</p>
         <h1>Des visuels pensés pour convaincre avant la réalisation.</h1>

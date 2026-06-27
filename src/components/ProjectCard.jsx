@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function ProjectCard({ project }) {
   return (
     <article className="project-card reveal">
-      <img src={project.image} alt={`Vue du projet ${project.title}`} />
+      <img src={project.image} alt={`Vue du projet ${project.title}`} loading="lazy" />
       <div>
         <p>
           {project.category} • {project.location}
