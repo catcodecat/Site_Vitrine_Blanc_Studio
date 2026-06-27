@@ -5,7 +5,7 @@ function About() {
     <section className="page section team">
       <div className="section-heading reveal">
         <p className="eyebrow">À propos</p>
-        <h1>Une studio créative pour valoriser les projets d'architecture.</h1>
+        <h1>Un studio créatif pour valoriser les projets d'architecture.</h1>
         <p>
           Blanc Studio accompagne les particuliers, les architectes et les professionnels de
           l'immobilier dans la présentation de projets d'aménagement, d'architecture intérieure
@@ -17,8 +17,8 @@ function About() {
         <div>
           <h2>Une approche visuelle et structurée</h2>
           <p>
-            Le site reste un projet de formation, mais il présente une organisation proche d'un
-            vrai site vitrine: identité visuelle, portfolio, services, équipe et contact.
+            Nous transformons les plans, intentions et références en images lisibles, élégantes
+            et prêtes à soutenir une présentation commerciale ou une décision de conception.
           </p>
         </div>
       </div>

@@ -8,8 +8,8 @@ function Contact() {
           <p className="eyebrow">Contact</p>
           <h1>Parlez-nous de votre projet</h1>
           <p>
-            Décrivez votre besoin: images, animation, VR, concept IA ou accompagnement complet.
-            Le formulaire simule l'envoi et reste adapté à un projet de formation.
+            Décrivez votre besoin: images 3D, animation, visite virtuelle, concept IA ou
+            accompagnement design. Nous vous répondons avec une première orientation adaptée.
           </p>
           <div className="contact-details">
             <a href="tel:+33761212887">07 61 21 28 87</a>

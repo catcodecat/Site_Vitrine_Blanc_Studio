@@ -28,6 +28,7 @@ body {
   color: var(--text);
   background: var(--page-bg);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 img {
@@ -57,6 +58,7 @@ textarea {
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   z-index: 30;
   display: flex;
   align-items: center;
@@ -74,6 +76,7 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
 }
 
 .brand img {
@@ -86,12 +89,14 @@ textarea {
 .brand span {
   display: grid;
   gap: 2px;
+  min-width: 0;
 }
 
 .brand strong {
   color: var(--white);
   font-size: 22px;
   font-weight: 800;
+  white-space: nowrap;
 }
 
 .brand small {
@@ -121,6 +126,7 @@ textarea {
 
 .menu-toggle {
   display: none;
+  flex: 0 0 auto;
   color: var(--white);
   background: transparent;
   border: 1px solid var(--line-light);
@@ -133,6 +139,8 @@ textarea {
   min-height: 100vh;
   display: grid;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
   overflow: hidden;
   padding: 120px 5vw 76px;
   color: var(--white);
@@ -165,12 +173,14 @@ textarea {
   position: relative;
   z-index: 2;
   max-width: 980px;
+  min-width: 0;
 }
 
 .hero-brand {
   display: inline-flex;
   align-items: center;
   gap: 14px;
+  max-width: 100%;
   margin-bottom: 26px;
   padding: 10px 15px 10px 10px;
   background: rgba(17, 24, 32, 0.34);
@@ -202,6 +212,7 @@ textarea {
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  white-space: normal;
 }
 
 .eyebrow {
@@ -218,6 +229,7 @@ h2,
 h3 {
   font-weight: 500;
   letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
 }
 
 h1 {
@@ -256,12 +268,14 @@ h2 {
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
   min-height: 48px;
   padding: 0 22px;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -923,14 +937,64 @@ dd {
 }
 
 @media (max-width: 900px) {
+  .site-header {
+    gap: 12px;
+    padding: 0 24px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand strong {
+    font-size: 23px;
+  }
+
+  .menu-toggle {
+    min-width: 0;
+    padding: 8px 12px;
+  }
+
   .hero {
     min-height: 100svh;
-    padding: 100px 5vw 38px;
+    padding: 100px 24px 38px;
+  }
+
+  .hero-content {
+    width: calc(100vw - 48px);
+    max-width: calc(100vw - 48px);
+  }
+
+  .hero-brand {
+    width: calc(100vw - 48px);
+    max-width: calc(100vw - 48px);
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .hero-brand img {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-content .hero-brand p {
+    font-size: 18px;
+    line-height: 1.1;
+  }
+
+  .hero-brand span {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    overflow-wrap: anywhere;
   }
 
   h1 {
-    font-size: clamp(34px, 11vw, 48px);
+    font-size: clamp(34px, 10vw, 44px);
     line-height: 1;
+    max-width: 100%;
+    word-break: normal;
+    overflow-wrap: break-word;
   }
 
   h2 {
@@ -940,6 +1004,24 @@ dd {
   .hero-content p:not(.eyebrow) {
     font-size: 17px;
     line-height: 1.55;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: calc(100vw - 48px);
+    max-width: calc(100vw - 48px);
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-content .hero-proof {
+    font-size: 13px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
   }
 
   .brand small {
@@ -997,5 +1079,54 @@ dd {
 
   .site-footer {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-header {
+    padding: 0 16px;
+  }
+
+  .brand img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand strong {
+    font-size: 21px;
+  }
+
+  .hero {
+    padding-left: 24px;
+    padding-right: 48px;
+  }
+
+  .hero-content,
+  .hero-brand,
+  .hero-actions {
+    width: calc(100vw - 96px);
+    max-width: calc(100vw - 96px);
+  }
+
+  .menu-toggle {
+    position: fixed;
+    top: 18px;
+    right: 16px;
+    width: 42px;
+    height: 36px;
+    padding: 0;
+    overflow: hidden;
+    color: transparent;
+  }
+
+  .menu-toggle::before {
+    content: "Menu";
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .hero-content p:not(.eyebrow) {
+    font-size: 16px;
   }
 }

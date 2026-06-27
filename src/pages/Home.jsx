@@ -18,15 +18,15 @@ function Home() {
           <div className="hero-brand">
             <img src="/images/logo_blanc_studio.png" alt="" />
             <div>
-              <p>Visualization Architectural</p>
-              <span>3D • IA • Expériences immersives</span>
+              <p>Visualisation architecturale</p>
+              <span>3D • IA • Design intérieur</span>
             </div>
           </div>
 
-          <h1>Des visuels qui accélèrent vos ventes immobilières</h1>
+          <h1>Des visuels 3D pour vendre vos projets</h1>
           <p>
-            Nous créons des visuels photoréalistes pour promoteurs, architectes et
-            professionnels de l'immobilier afin de présenter les projets avec clarté.
+            Nous créons des images photoréalistes, concepts IA et supports de présentation
+            pour promouvoir vos projets d'architecture, d'intérieur et d'immobilier.
           </p>
 
           <div className="hero-actions">
@@ -177,7 +177,7 @@ function Home() {
       <section className="portfolio-preview section">
         <div className="section-heading reveal">
           <p className="eyebrow">Portfolio</p>
-          <h2>Des projets fictifs mais crédibles pour présenter le savoir-faire.</h2>
+          <h2>Des réalisations conçues pour révéler le potentiel de chaque projet.</h2>
         </div>
         <div className="portfolio-grid">
           {projects.slice(0, 3).map((project) => (

@@ -7,7 +7,7 @@ function Services() {
       <div className="section-heading reveal">
         <p className="eyebrow">Services</p>
         <h1>Une offre complète pour présenter les projets avec impact.</h1>
-        <p>Les prestations reprennent les besoins principaux d'un studio de visualisation.</p>
+        <p>Chaque prestation aide vos clients, investisseurs ou partenaires à comprendre le projet avant sa réalisation.</p>
       </div>
       <div className="services-grid">
         {services.map((service) => (
