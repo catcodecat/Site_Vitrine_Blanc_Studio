@@ -8,8 +8,8 @@ function Contact() {
           <p className="eyebrow">Contact</p>
           <h1>Parlez-nous de votre projet</h1>
           <p>
-            Décrivez votre besoin: images 3D, animation, visite virtuelle, concept IA ou
-            accompagnement design. Nous vous répondons avec une première orientation adaptée.
+            Envoyez-nous vos plans, références ou premières intentions. Nous vous répondons
+            avec une orientation claire sur le format, les étapes et les visuels adaptés.
           </p>
           <div className="contact-details">
             <a href="tel:+33761212887">07 61 21 28 87</a>

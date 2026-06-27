@@ -184,6 +184,11 @@ function Home() {
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
+        <div className="cta-band reveal">
+          <h2>Un projet à présenter, vendre ou valider?</h2>
+          <p>Blanc Studio transforme vos plans et intentions en images prêtes à convaincre.</p>
+          <Link className="btn btn-primary" to="/contact">Demander un devis</Link>
+        </div>
       </section>
 
       <Testimonials />

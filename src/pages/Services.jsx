@@ -14,6 +14,28 @@ function Services() {
           <ServiceCard service={service} key={service.id} />
         ))}
       </div>
+      <div className="service-details reveal">
+        {services.map((service) => (
+          <article key={`${service.id}-details`}>
+            <p className="eyebrow">{service.number}</p>
+            <h2>{service.title}</h2>
+            <dl>
+              <div>
+                <dt>Pour qui</dt>
+                <dd>{service.audience}</dd>
+              </div>
+              <div>
+                <dt>Résultat</dt>
+                <dd>{service.deliverable}</dd>
+              </div>
+              <div>
+                <dt>Organisation</dt>
+                <dd>{service.timeline}</dd>
+              </div>
+            </dl>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }

@@ -4,6 +4,9 @@
     "number": "01",
     "title": "Perspectives extérieures",
     "description": "Des images photoréalistes pour valoriser l'architecture, le cadre de vie et l'attractivité du programme avant sa construction.",
+    "audience": "Promoteurs, architectes, constructeurs et agences immobilières.",
+    "deliverable": "Vues extérieures prêtes pour plaquettes, annonces, panneaux de vente et présentations investisseurs.",
+    "timeline": "Premières previews selon complexité du dossier.",
     "image": "/images/Images_exteriers/Villa_Cap_Antibes.jpg"
   },
   {
@@ -11,6 +14,9 @@
     "number": "02",
     "title": "Visualisation intérieure",
     "description": "Des ambiances élégantes et réalistes pour aider les clients à se projeter dans les volumes, les matières et les usages.",
+    "audience": "Architectes d'intérieur, décorateurs, particuliers et exploitants d'espaces premium.",
+    "deliverable": "Images intérieures cadrées, cohérentes avec les matériaux, lumières et intentions du projet.",
+    "timeline": "Prévisualisations puis corrections avant rendu final.",
     "image": "/images/Images_interiers/Sejour.jpg"
   },
   {
@@ -18,6 +24,9 @@
     "number": "03",
     "title": "Animation 3D",
     "description": "Des films courts et immersifs pour raconter un projet, montrer son environnement et renforcer la présentation.",
+    "audience": "Programmes immobiliers, concours, lancements commerciaux et présentations haut de gamme.",
+    "deliverable": "Séquence vidéo exportée pour site web, réseaux sociaux ou rendez-vous client.",
+    "timeline": "Storyboard, previews, corrections puis export final.",
     "image": "/images/Images_exteriers/Chalet_Alpes.jpg"
   },
   {
@@ -25,6 +34,9 @@
     "number": "04",
     "title": "Visites virtuelles / VR",
     "description": "Des expériences interactives pour explorer un logement, un espace ou un programme avant même sa réalisation.",
+    "audience": "Promoteurs, showrooms, espaces de vente et projets nécessitant une immersion.",
+    "deliverable": "Parcours interactif ou supports immersifs pour faciliter la projection et la décision.",
+    "timeline": "Préparation des points de vue, intégration et validation de l'expérience.",
     "image": "/images/Images_interiers/Spa_de_Luxe.jpg"
   },
   {
@@ -32,6 +44,9 @@
     "number": "05",
     "title": "Concepts IA",
     "description": "Des directions visuelles rapides pour tester des ambiances, explorer des variantes et enrichir la phase de conception.",
+    "audience": "Architectes, designers, marques et porteurs de projet en phase d'exploration.",
+    "deliverable": "Pistes visuelles et moodboards IA pour comparer des directions avant production 3D.",
+    "timeline": "Itérations rapides pour cadrer l'intention visuelle.",
     "image": "/images/Images_AI/image_ai_4.png"
   },
   {
@@ -39,6 +54,9 @@
     "number": "06",
     "title": "Supports de vente",
     "description": "Images optimisées pour plaquettes, sites web, annonces, présentations investisseurs et lancements commerciaux.",
+    "audience": "Développeurs immobiliers, agences, équipes marketing et directions commerciales.",
+    "deliverable": "Pack de visuels cohérent pour renforcer la compréhension et la valeur perçue du projet.",
+    "timeline": "Production organisée selon le calendrier commercial.",
     "image": "/images/Images_exteriers/Residence_Mets.jpg"
   }
 ]

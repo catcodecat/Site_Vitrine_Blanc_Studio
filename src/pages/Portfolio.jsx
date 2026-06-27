@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import ProjectCard from "../components/ProjectCard.jsx";
 import projects from "../data/projects.json";
 
@@ -14,7 +15,11 @@ function Portfolio() {
     <section className="section page portfolio-preview">
       <div className="section-heading reveal">
         <p className="eyebrow">Portfolio</p>
-        <h1>Projets de design, visualisation et présentation immobilière.</h1>
+        <h1>Des visuels pensés pour convaincre avant la réalisation.</h1>
+        <p>
+          Découvrez des typologies de projets accompagnées par Blanc Studio: intérieurs,
+          extérieurs, programmes immobiliers et supports de vente.
+        </p>
       </div>
       <div className="filter-bar" aria-label="Filtrer les projets">
         {categories.map((item) => (
@@ -27,6 +32,11 @@ function Portfolio() {
         {filteredProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
+      </div>
+      <div className="cta-band reveal">
+        <h2>Vous préparez un lancement, une rénovation ou une présentation client?</h2>
+        <p>Envoyez vos plans, références ou premières intentions. Nous vous aidons à choisir le format visuel le plus efficace.</p>
+        <Link className="btn btn-primary" to="/contact">Parler de votre projet</Link>
       </div>
     </section>
   );
