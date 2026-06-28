@@ -1,2 +1,2 @@
-/api/* /api-unavailable.json 404
+/api/* /api-unavailable.json 200
 /* /index.html 200

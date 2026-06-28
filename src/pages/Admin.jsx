@@ -42,7 +42,7 @@ function Admin() {
     });
     const result = await response.json();
 
-    if (!response.ok) {
+    if (!response.ok || result.ok === false) {
       throw new Error(result.message || "La requête administrateur a échoué.");
     }
 

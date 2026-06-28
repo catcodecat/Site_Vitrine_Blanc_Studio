@@ -70,7 +70,7 @@ function ContactForm() {
 
       const result = await response.json();
 
-      if (!response.ok) {
+      if (!response.ok || result.ok === false) {
         setStatus(result.message || "Le message n'a pas pu être enregistré.");
         return;
       }
