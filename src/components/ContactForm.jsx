@@ -68,7 +68,16 @@ function ContactForm() {
         body: JSON.stringify(values),
       });
 
-      const result = await response.json();
+      let result;
+      try {
+        result = await response.json();
+      } catch (error) {
+        result = {
+          ok: false,
+          message:
+            "Le serveur API n'est pas disponible sur ce déploiement. Veuillez réessayer plus tard ou nous écrire directement à contact@blancstudio.fr.",
+        };
+      }
 
       if (!response.ok || result.ok === false) {
         setStatus(result.message || "Le message n'a pas pu être enregistré.");

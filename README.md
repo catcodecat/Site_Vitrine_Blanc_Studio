@@ -11,7 +11,7 @@ Le projet a ete prepare pour une presentation Studi avec une architecture claire
 
 Le deploiement Netlify sert le frontend React/Vite. Les routes SPA sont gerees par `public/_redirects`.
 
-L'API Express fonctionne en local ou via une infrastructure Node/Docker separee. Sur Netlify, le site reste accessible mais les endpoints `/api/*` renvoient une reponse JSON indiquant que l'API n'est pas disponible sur ce deploiement statique.
+L'API Express fonctionne en local ou via une infrastructure Node/Docker separee. Sur Netlify, le site reste accessible mais les endpoints `/api/*` ne disposent pas d'un serveur persistant. Le frontend gere ce cas avec un message clair indiquant que l'API n'est pas disponible sur le deploiement statique.
 
 ## Technologies
 

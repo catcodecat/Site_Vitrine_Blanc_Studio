@@ -40,7 +40,15 @@ function Admin() {
         ...options.headers,
       },
     });
-    const result = await response.json();
+    let result;
+    try {
+      result = await response.json();
+    } catch (error) {
+      result = {
+        ok: false,
+        message: "Le serveur API n'est pas disponible sur ce déploiement.",
+      };
+    }
 
     if (!response.ok || result.ok === false) {
       throw new Error(result.message || "La requête administrateur a échoué.");
