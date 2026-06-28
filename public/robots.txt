@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://www.blancstudio.fr/sitemap.xml
+Sitemap: https://blanc-studio.netlify.app/sitemap.xml

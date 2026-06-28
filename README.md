@@ -1,175 +1,341 @@
 # Blanc Studio
 
-## Présentation du projet
+Blanc Studio est un site vitrine professionnel pour une studio de visualisation 3D, concepts IA et design d'interieur. Le projet presente les services, le portfolio, le processus de travail, une page de contact et un espace administrateur simple pour suivre les demandes entrantes.
 
-Blanc Studio est un site vitrine réalisé dans le cadre d'un projet de formation pour le titre professionnel Développeur Web et Web Mobile.
+Le projet a ete prepare pour une presentation Studi avec une architecture claire, un frontend React, un backend Express minimal, des tests smoke/API et une configuration de production pour un deploiement statique Netlify.
 
-Le projet présente une studio fictif spécialisée dans le design d'intérieur, la visualisation 3D, les perspectives architecturales et les supports de présentation pour l'immobilier.
+## Production
 
-## Objectif
+- Site public: https://blanc-studio.netlify.app
+- Repository GitHub: https://github.com/catcodecat/Site_Vitrine_Blanc_Studio
 
-L'objectif est de présenter les services de Blanc Studio, afficher un portfolio de projets, montrer une équipe et permettre à un visiteur d'envoyer une demande de contact simulée.
+Le deploiement Netlify sert le frontend React/Vite. Les routes SPA sont gerees par `public/_redirects`.
 
-## Technologies utilisées
+L'API Express fonctionne en local ou via une infrastructure Node/Docker separee. Sur Netlify, le site reste accessible mais les endpoints `/api/*` renvoient une reponse JSON indiquant que l'API n'est pas disponible sur ce deploiement statique.
 
-- React
+## Technologies
+
+- React 18
 - Vite
 - React Router
 - JavaScript
 - CSS
-- Données locales en JSON
-- Back-end simple avec Node.js et Express
-- Docker et Nginx pour servir la version de production
+- Node.js
+- Express
+- JSONL pour le stockage simple des messages
+- Docker / Docker Compose
+- Nginx pour servir la version de production Docker
+- Tests smoke/API avec Node.js
 
-## Fonctionnalités
+## Structure du projet
 
-- Navigation responsive.
-- Pages séparées avec React Router.
-- Page d'accueil avec hero, galerie, services, équipe, portfolio et témoignages.
-- Portfolio filtrable par catégorie.
-- Page détail projet.
-- Formulaire de contact avec validation front-end.
-- Enregistrement des demandes avec une API Express simple.
-- Sauvegarde locale dans le navigateur si le serveur API n'est pas lancé.
-- Témoignages avec quatre logos/icônes clients.
-- Responsive mobile, tablette et desktop.
+```text
+src/
+  components/        Composants reutilisables
+  data/              Donnees de contenu en JSON
+  pages/             Pages React Router
+  styles/            Styles globaux
+server/
+  server.js          API Express
+public/
+  images/            Assets publics
+  robots.txt         Robots SEO
+  sitemap.xml        Sitemap production
+  _redirects         Regles Netlify SPA
+tests/
+  smoke.mjs          Tests smoke/API
+docs/                Documentation projet
+```
 
-## Installation locale
+Les dossiers locaux `docs-*`, `Captures-*` et certains PDF peuvent etre conserves localement comme materiels de presentation Studi. Ils ne sont pas necessaires au fonctionnement du site.
+
+## Frontend
+
+Le frontend est une application React/Vite avec React Router.
+
+Routes principales:
+
+- `/`
+- `/a-propos`
+- `/services`
+- `/portfolio`
+- `/portfolio/:projectId`
+- `/processus`
+- `/contact`
+- `/admin`
+- `/mentions-legales`
+
+Le composant `Seo` met a jour les titres, meta descriptions, Open Graph, Twitter Card, canonical et robots par page.
+
+## Backend
+
+Le backend est une API Express simple dans `server/server.js`.
+
+Il gere:
+
+- la verification de sante;
+- l'envoi du formulaire de contact;
+- la validation backend;
+- un honeypot anti-spam;
+- un rate limiting simple;
+- le stockage des messages dans `data/messages.jsonl`;
+- les endpoints administrateur pour lister, lire et mettre a jour les messages.
+
+## Contact Form
+
+La page `/contact` permet d'envoyer une demande projet.
+
+Champs:
+
+- nom;
+- email;
+- telephone;
+- type de projet;
+- budget approximatif;
+- message;
+- acceptation de la politique de confidentialite.
+
+Validation frontend:
+
+- champs obligatoires;
+- email valide;
+- consentement obligatoire;
+- `aria-invalid`;
+- `aria-describedby`;
+- message d'erreur lisible.
+
+Validation backend:
+
+- email valide;
+- message non vide;
+- limite de taille;
+- nettoyage des caracteres dangereux;
+- honeypot;
+- rate limiting.
+
+## Admin Dashboard
+
+L'espace administrateur est disponible sur:
+
+```text
+/admin
+```
+
+Il permet de:
+
+- charger les messages entrants;
+- filtrer par statut;
+- consulter une demande;
+- changer le statut;
+- ajouter un commentaire administrateur.
+
+Statuts:
+
+- `new` / Nouveau;
+- `read` / Lu;
+- `processed` / Traite;
+- `replied` / Reponse envoyee.
+
+L'acces aux endpoints admin est protege par une variable d'environnement `ADMIN_PASSWORD`.
+
+## API endpoints
+
+Public:
+
+```text
+GET  /api/health
+POST /api/contact
+```
+
+Admin:
+
+```text
+GET   /api/admin/messages
+GET   /api/admin/messages/:id
+PATCH /api/admin/messages/:id
+```
+
+Les endpoints admin demandent le header:
+
+```text
+x-admin-password: <ADMIN_PASSWORD>
+```
+
+## Variables d'environnement
+
+Creer un fichier `.env` en local si necessaire:
+
+```env
+PORT=3001
+ADMIN_PASSWORD=change-this-admin-password
+```
+
+Variables supportees:
+
+- `PORT`: port du serveur Express;
+- `ADMIN_PASSWORD`: mot de passe administrateur;
+- `DATA_DIR`: dossier de stockage des messages, utile pour les tests ou un environnement specifique.
+
+Un exemple est disponible dans `.env.example`.
+
+## Installation
 
 ```bash
 npm install
+```
+
+## Lancer le frontend
+
+```bash
 npm run dev
 ```
 
-Puis ouvrir :
+Adresse locale:
 
 ```text
-http://localhost:5173
+http://127.0.0.1:5173
 ```
 
-Pour tester le back-end en local, ouvrir un deuxième terminal :
+## Lancer le backend
 
 ```bash
 npm run backend
 ```
 
-L'API est disponible ici :
-
-```text
-http://localhost:3001/api/health
-```
-
-## Vérification du back-end
-
-Le back-end est développé avec Express dans le fichier `server/server.js`.
-Il se lance depuis la racine du projet avec la commande :
-
-```bash
-npm run backend
-```
-
-Une fois le serveur lancé, l'API écoute sur le port 3001.
-
-La route de test est :
+Adresse API locale:
 
 ```text
 http://127.0.0.1:3001/api/health
 ```
 
-Réponse attendue :
+Pour tester l'admin en local, definir `ADMIN_PASSWORD` avant de lancer le backend.
 
-```json
-{ "ok": true, "service": "blanc-studio-api" }
-```
-
-Cette route permet de vérifier que le serveur Express fonctionne correctement.
-
-## Lancer une version de production sans Docker
-
-Si Docker n'est pas disponible sur la machine :
+## Build production
 
 ```bash
 npm run build
-npm run preview -- --port 8080
 ```
 
-Puis ouvrir :
+Le dossier genere est:
 
 ```text
-http://localhost:8080
+dist/
 ```
 
-## Lancer le projet avec Docker
+## Preview production locale
 
-Commande :
+```bash
+npm run preview
+```
+
+## Tests
+
+```bash
+npm run test
+```
+
+Les tests verifient:
+
+- formulaire vide refuse;
+- email invalide refuse;
+- creation d'un message valide;
+- protection admin avec mauvais mot de passe;
+- lecture des messages admin;
+- mise a jour du statut;
+- routes principales en preview production.
+
+## Docker
+
+Le projet contient:
+
+- `Dockerfile`;
+- `Dockerfile.api`;
+- `docker-compose.yml`;
+- `nginx.conf`.
+
+Commande:
 
 ```bash
 docker compose up --build
 ```
 
-Puis ouvrir :
+Puis ouvrir:
 
 ```text
 http://localhost:8080
 ```
 
-Pour arrêter :
+## SEO
 
-```bash
-docker compose down
+Elements en place:
+
+- titres par page;
+- meta descriptions;
+- canonical;
+- Open Graph;
+- Twitter Cards;
+- `robots.txt`;
+- `sitemap.xml`;
+- textes alternatifs sur les images principales;
+- lazy loading sur les images hors premier ecran.
+
+URL de production utilisee dans le sitemap:
+
+```text
+https://blanc-studio.netlify.app
 ```
 
-Docker permet ici de construire l'application avec Node.js, puis de servir le dossier `dist` avec Nginx. Si Docker ne peut pas être installé sur la machine, les fichiers restent présents pour montrer la configuration prévue.
+## Git workflow
 
-## Méthode Git utilisée
+Le projet utilise une branche principale:
 
-La méthode prévue pour le projet :
-
-- `main` pour la version stable ;
-- `develop` pour le développement ;
-- branches `feature` pour les fonctionnalités.
-
-Exemples de branches :
-
-- `feature/restore-design`
-- `feature/testimonials`
-- `feature/exam-docs`
-- `feature/docker`
-
-Commande utile pour montrer l'historique :
-
-```bash
-git log --oneline --graph --all
+```text
+main
 ```
 
-## Structure du projet
+Les commits sont separes par etapes:
 
-- `src/components` : composants réutilisables.
-- `src/pages` : pages du site.
-- `src/data` : données mockées en JSON.
-- `src/styles` : styles globaux.
-- `public/images` : images utilisées par l'application.
-- `docs` : documentation pour l'examen.
-- `Dockerfile`, `docker-compose.yml`, `.dockerignore`, `nginx.conf` : configuration Docker.
+- corrections critiques;
+- ameliorations UX/contenu;
+- formulaire et backend messages;
+- admin dashboard;
+- SEO/accessibilite/performance;
+- tests et verification finale.
 
-## Données et back-end
+## Limites et evolutions
 
-Dans cette version, les données de contenu sont mockées localement en JSON. Le formulaire de contact utilise une petite API Express qui enregistre les demandes dans `data/messages.jsonl`. Il n'y a pas encore de vraie base de données ni d'envoi email.
+### Limites actuelles
 
-## Accessibilité et responsive
+- Les messages sont stockes dans un fichier JSONL.
+- Il n'y a pas encore de base de donnees relationnelle.
+- Il n'y a pas d'envoi d'email automatique.
+- La protection admin est volontairement simple avec `ADMIN_PASSWORD`.
+- Les tests sont des smoke/API tests de base.
+- Le deploiement Netlify sert le frontend statique; l'API Express doit etre lancee separement pour tester l'envoi reel et l'administration des messages.
 
-Le site utilise des balises sémantiques, des textes alternatifs sur les images utiles, des labels de formulaire, un focus visible au clavier et une mise en page responsive.
+### Evolutions possibles
 
-## Limites
+- Migrer le stockage vers PostgreSQL ou SQLite.
+- Ajouter une authentification administrateur plus complete.
+- Ajouter des notifications email.
+- Ajouter des tests end-to-end UI avec Playwright.
+- Optimiser davantage les images lourdes.
+- Ameliorer le suivi SEO avec un domaine final personnalise.
+- Ajouter un monitoring simple des erreurs de formulaire.
 
-- Pas de vraie base de données.
-- Pas d'envoi réel d'email.
-- Pas d'espace administrateur.
+## Preparation Studi
 
-## Améliorations possibles
+Le projet permet de presenter:
 
-- Ajouter une API.
-- Connecter une base de données.
-- Ajouter un espace administrateur.
-- Permettre l'ajout de projets depuis une interface.
-- Envoyer réellement les messages de contact par email.
+- contexte et cahier des charges;
+- architecture frontend;
+- architecture backend;
+- formulaire de contact;
+- API;
+- espace administrateur;
+- responsive design;
+- SEO;
+- securite minimale;
+- tests;
+- workflow Git;
+- deployment frontend sur Netlify.

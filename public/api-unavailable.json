@@ -1,0 +1,4 @@
+{
+  "ok": false,
+  "message": "L'API Blanc Studio n'est pas disponible sur ce déploiement statique. Lancez le serveur backend pour tester l'envoi et l'administration des messages."
+}
