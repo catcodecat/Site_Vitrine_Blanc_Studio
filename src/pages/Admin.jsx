@@ -15,8 +15,20 @@ function formatDate(value) {
   }).format(new Date(value));
 }
 
+function clearSession() {
+  sessionStorage.removeItem("blancAdminToken");
+  sessionStorage.removeItem("blancAdminTokenExpiry");
+}
+
+function storeSession(token, expiresAt) {
+  sessionStorage.setItem("blancAdminToken", token);
+  sessionStorage.setItem("blancAdminTokenExpiry", String(expiresAt));
+}
+
 function Admin() {
-  const [password, setPassword] = useState(() => sessionStorage.getItem("blancAdminPassword") || "");
+  const [password, setPassword] = useState("");
+  const [token, setToken] = useState(() => sessionStorage.getItem("blancAdminToken") || "");
+  const [tokenExpiry, setTokenExpiry] = useState(() => Number(sessionStorage.getItem("blancAdminTokenExpiry")) || 0);
   const [messages, setMessages] = useState([]);
   const [selectedId, setSelectedId] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -31,12 +43,20 @@ function Admin() {
     [messages, statusFilter],
   );
 
-  async function requestAdmin(path, options = {}) {
+  function endSession() {
+    clearSession();
+    setToken("");
+    setTokenExpiry(0);
+    setMessages([]);
+    setSelectedId("");
+  }
+
+  async function callAdminApi(path, authToken, options = {}) {
     const response = await fetch(path, {
       ...options,
       headers: {
         "Content-Type": "application/json",
-        "x-admin-password": password,
+        "x-admin-token": authToken,
         ...options.headers,
       },
     });
@@ -50,6 +70,10 @@ function Admin() {
       };
     }
 
+    if (response.status === 401) {
+      endSession();
+    }
+
     if (!response.ok || result.ok === false) {
       throw new Error(result.message || "La requête administrateur a échoué.");
     }
@@ -57,16 +81,14 @@ function Admin() {
     return result;
   }
 
-  async function loadMessages(event) {
-    event?.preventDefault();
+  async function loadMessages(authToken) {
     setIsLoading(true);
     setFeedback("");
 
     try {
-      const result = await requestAdmin("/api/admin/messages");
+      const result = await callAdminApi("/api/admin/messages", authToken);
       setMessages(result.messages);
       setSelectedId((current) => current || result.messages[0]?.id || "");
-      sessionStorage.setItem("blancAdminPassword", password);
     } catch (error) {
       setFeedback(error.message);
     } finally {
@@ -74,10 +96,62 @@ function Admin() {
     }
   }
 
+  async function login(event) {
+    event.preventDefault();
+    setIsLoading(true);
+    setFeedback("");
+
+    try {
+      const response = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+      let result;
+      try {
+        result = await response.json();
+      } catch (error) {
+        result = {
+          ok: false,
+          message: "Le serveur API n'est pas disponible sur ce déploiement.",
+        };
+      }
+
+      if (!response.ok || result.ok === false) {
+        throw new Error(result.message || "Connexion refusée.");
+      }
+
+      storeSession(result.token, result.expiresAt);
+      setToken(result.token);
+      setTokenExpiry(result.expiresAt);
+      setPassword("");
+      setIsLoading(false);
+      await loadMessages(result.token);
+    } catch (error) {
+      setFeedback(error.message);
+      setIsLoading(false);
+    }
+  }
+
+  async function logout() {
+    if (token) {
+      try {
+        await fetch("/api/admin/logout", {
+          method: "POST",
+          headers: { "x-admin-token": token },
+        });
+      } catch (error) {
+        // Deconnexion locale de toute facon, meme si l'appel serveur echoue.
+      }
+    }
+    endSession();
+    setFeedback("");
+  }
+
   async function saveMessage(event) {
     event.preventDefault();
 
-    if (!selectedMessage) {
+    if (!selectedMessage || !token) {
       return;
     }
 
@@ -85,7 +159,7 @@ function Admin() {
     setFeedback("");
 
     try {
-      const result = await requestAdmin(`/api/admin/messages/${selectedMessage.id}`, {
+      const result = await callAdminApi(`/api/admin/messages/${selectedMessage.id}`, token, {
         method: "PATCH",
         body: JSON.stringify({ status, adminComment }),
       });
@@ -105,6 +179,16 @@ function Admin() {
     }
   }, [selectedMessage]);
 
+  useEffect(() => {
+    if (token && tokenExpiry > Date.now()) {
+      loadMessages(token);
+    } else if (token) {
+      endSession();
+    }
+    // Chargement automatique une seule fois au montage si une session valide existe deja.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <section className="admin-page section page">
       <Seo title="Administration" description="Espace administrateur Blanc Studio." noIndex />
@@ -114,21 +198,29 @@ function Admin() {
         <p>Suivez les demandes reçues depuis le formulaire de contact Blanc Studio.</p>
       </div>
 
-      <form className="admin-login" onSubmit={loadMessages}>
-        <label htmlFor="admin-password">Mot de passe administrateur</label>
-        <div>
-          <input
-            id="admin-password"
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            autoComplete="current-password"
-          />
-          <button className="btn btn-primary" type="submit" disabled={isLoading}>
-            Charger
+      {!token ? (
+        <form className="admin-login" onSubmit={login}>
+          <label htmlFor="admin-password">Mot de passe administrateur</label>
+          <div>
+            <input
+              id="admin-password"
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              autoComplete="current-password"
+            />
+            <button className="btn btn-primary" type="submit" disabled={isLoading}>
+              Se connecter
+            </button>
+          </div>
+        </form>
+      ) : (
+        <div className="admin-login">
+          <button className="btn" type="button" onClick={logout} disabled={isLoading}>
+            Se déconnecter
           </button>
         </div>
-      </form>
+      )}
 
       {feedback && <p className="form-message" role="status">{feedback}</p>}
 

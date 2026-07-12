@@ -106,15 +106,42 @@ async function run() {
       throw new Error("Valid contact form should create a message.");
     }
 
+    const loginFailed = await requestJson(`http://127.0.0.1:${apiPort}/api/admin/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: "wrong-password" }),
+    });
+    if (loginFailed.response.status !== 401) {
+      throw new Error("Admin login should reject an invalid password.");
+    }
+
+    const login = await requestJson(`http://127.0.0.1:${apiPort}/api/admin/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: adminPassword }),
+    });
+    if (login.response.status !== 200 || !login.body.token) {
+      throw new Error("Admin login should return a session token.");
+    }
+
+    const adminToken = login.body.token;
+
+    const legacyHeaderRejected = await requestJson(`http://127.0.0.1:${apiPort}/api/admin/messages`, {
+      headers: { "x-admin-password": adminPassword },
+    });
+    if (legacyHeaderRejected.response.status !== 401) {
+      throw new Error("Admin endpoint should no longer accept the raw password header.");
+    }
+
     const unauthorized = await requestJson(`http://127.0.0.1:${apiPort}/api/admin/messages`, {
-      headers: { "x-admin-password": "wrong-password" },
+      headers: { "x-admin-token": "wrong-token" },
     });
     if (unauthorized.response.status !== 401) {
-      throw new Error("Admin endpoint should reject an invalid password.");
+      throw new Error("Admin endpoint should reject an invalid session token.");
     }
 
     const list = await requestJson(`http://127.0.0.1:${apiPort}/api/admin/messages`, {
-      headers: { "x-admin-password": adminPassword },
+      headers: { "x-admin-token": adminToken },
     });
     if (list.response.status !== 200 || list.body.messages.length !== 1) {
       throw new Error("Admin endpoint should list created messages.");
@@ -125,12 +152,27 @@ async function run() {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        "x-admin-password": adminPassword,
+        "x-admin-token": adminToken,
       },
       body: JSON.stringify({ status: "replied", adminComment: "Réponse envoyée." }),
     });
     if (patched.response.status !== 200 || patched.body.message.status !== "replied" || !patched.body.message.repliedAt) {
       throw new Error("Admin PATCH should update status and repliedAt.");
+    }
+
+    const logout = await requestJson(`http://127.0.0.1:${apiPort}/api/admin/logout`, {
+      method: "POST",
+      headers: { "x-admin-token": adminToken },
+    });
+    if (logout.response.status !== 200) {
+      throw new Error("Admin logout should succeed.");
+    }
+
+    const afterLogout = await requestJson(`http://127.0.0.1:${apiPort}/api/admin/messages`, {
+      headers: { "x-admin-token": adminToken },
+    });
+    if (afterLogout.response.status !== 401) {
+      throw new Error("Admin endpoint should reject a token invalidated by logout.");
     }
   } finally {
     stop(api);

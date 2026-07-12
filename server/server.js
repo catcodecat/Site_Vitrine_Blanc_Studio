@@ -18,6 +18,8 @@ const projectRoot = path.resolve(__dirname, "..");
 const dataDir = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : path.join(projectRoot, "data");
 const messagesFile = path.join(dataDir, "messages.jsonl");
 const adminPassword = process.env.ADMIN_PASSWORD || "";
+const adminSessions = new Map(); // token -> timestamp d'expiration
+const SESSION_TTL_MS = 30 * 60 * 1000; // 30 min fixes, sans glissement
 
 // API JSON uniquement, pas de HTML servi ici : CSP n'a aucun contexte a proteger.
 app.use(helmet({ contentSecurityPolicy: false }));
@@ -118,6 +120,29 @@ function appendMessage(message) {
   fs.appendFileSync(messagesFile, `${JSON.stringify(message)}\n`, "utf8");
 }
 
+function safeCompare(a, b) {
+  const bufA = Buffer.from(String(a ?? ""));
+  const bufB = Buffer.from(String(b ?? ""));
+
+  if (bufA.length !== bufB.length) {
+    crypto.timingSafeEqual(bufA, Buffer.alloc(bufA.length));
+    return false;
+  }
+
+  return crypto.timingSafeEqual(bufA, bufB);
+}
+
+function sweepExpiredSessions() {
+  const now = Date.now();
+  for (const [token, expiresAt] of adminSessions) {
+    if (expiresAt <= now) {
+      adminSessions.delete(token);
+    }
+  }
+}
+
+setInterval(sweepExpiredSessions, 5 * 60 * 1000).unref();
+
 function requireAdmin(request, response, next) {
   if (!adminPassword) {
     response.status(503).json({
@@ -127,10 +152,16 @@ function requireAdmin(request, response, next) {
     return;
   }
 
-  if (request.get("x-admin-password") !== adminPassword) {
+  const token = request.get("x-admin-token");
+  const expiresAt = token ? adminSessions.get(token) : undefined;
+
+  if (!expiresAt || expiresAt <= Date.now()) {
+    if (token) {
+      adminSessions.delete(token);
+    }
     response.status(401).json({
       ok: false,
-      message: "Mot de passe administrateur incorrect.",
+      message: "Session administrateur expirée ou invalide. Veuillez vous reconnecter.",
     });
     return;
   }
@@ -191,6 +222,42 @@ app.post("/api/contact", contactLimiter, (request, response) => {
     id: savedMessage.id,
     message: "Votre demande a bien été enregistrée. Blanc Studio vous répondra prochainement.",
   });
+});
+
+app.post("/api/admin/login", loginLimiter, (request, response) => {
+  if (!adminPassword) {
+    response.status(503).json({
+      ok: false,
+      message: "ADMIN_PASSWORD doit être défini pour accéder à l'espace administrateur.",
+    });
+    return;
+  }
+
+  const password = typeof request.body.password === "string" ? request.body.password : "";
+
+  if (!safeCompare(password, adminPassword)) {
+    response.status(401).json({
+      ok: false,
+      message: "Mot de passe administrateur incorrect.",
+    });
+    return;
+  }
+
+  const token = crypto.randomBytes(32).toString("hex");
+  const expiresAt = Date.now() + SESSION_TTL_MS;
+  adminSessions.set(token, expiresAt);
+
+  response.json({ ok: true, token, expiresAt });
+});
+
+app.post("/api/admin/logout", (request, response) => {
+  const token = request.get("x-admin-token");
+
+  if (token) {
+    adminSessions.delete(token);
+  }
+
+  response.json({ ok: true });
 });
 
 app.get("/api/admin/messages", adminLimiter, requireAdmin, (request, response) => {
