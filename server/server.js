@@ -1,4 +1,5 @@
 import express from "express";
+import helmet from "helmet";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
@@ -14,6 +15,8 @@ const messagesFile = path.join(dataDir, "messages.jsonl");
 const contactAttempts = new Map();
 const adminPassword = process.env.ADMIN_PASSWORD || "";
 
+// API JSON uniquement, pas de HTML servi ici : CSP n'a aucun contexte a proteger.
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: "20kb" }));
 
 function cleanText(value, maxLength) {
