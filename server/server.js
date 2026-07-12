@@ -7,6 +7,10 @@ import { fileURLToPath } from "node:url";
 
 const app = express();
 const port = process.env.PORT || 3001;
+
+// Actif uniquement derriere le nginx du docker-compose (TRUST_PROXY=1),
+// desactive par defaut pour ne pas changer le comportement en local.
+app.set("trust proxy", process.env.TRUST_PROXY === "1" ? 1 : false);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
