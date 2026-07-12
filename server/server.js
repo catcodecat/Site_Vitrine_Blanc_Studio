@@ -1,5 +1,6 @@
 import express from "express";
 import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
@@ -16,12 +17,37 @@ const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
 const dataDir = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : path.join(projectRoot, "data");
 const messagesFile = path.join(dataDir, "messages.jsonl");
-const contactAttempts = new Map();
 const adminPassword = process.env.ADMIN_PASSWORD || "";
 
 // API JSON uniquement, pas de HTML servi ici : CSP n'a aucun contexte a proteger.
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: "20kb" }));
+
+// message doit rester un objet JSON (jamais une chaine) pour que le
+// fallback "await response.json()" cote frontend recoive le bon contenu.
+const contactLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { ok: false, message: "Trop de demandes ont été envoyées. Veuillez réessayer dans quelques instants." },
+});
+
+const adminLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { ok: false, message: "Trop de requêtes administrateur. Veuillez réessayer plus tard." },
+});
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { ok: false, message: "Trop de tentatives de connexion. Veuillez réessayer plus tard." },
+});
 
 function cleanText(value, maxLength) {
   return String(value || "")
@@ -92,17 +118,6 @@ function appendMessage(message) {
   fs.appendFileSync(messagesFile, `${JSON.stringify(message)}\n`, "utf8");
 }
 
-function isRateLimited(request) {
-  const now = Date.now();
-  const ip = request.ip || request.socket.remoteAddress || "unknown";
-  const windowMs = 60 * 1000;
-  const maxAttempts = 5;
-  const attempts = (contactAttempts.get(ip) || []).filter((timestamp) => now - timestamp < windowMs);
-  attempts.push(now);
-  contactAttempts.set(ip, attempts);
-  return attempts.length > maxAttempts;
-}
-
 function requireAdmin(request, response, next) {
   if (!adminPassword) {
     response.status(503).json({
@@ -127,15 +142,7 @@ app.get("/api/health", (request, response) => {
   response.json({ ok: true, service: "blanc-studio-api" });
 });
 
-app.post("/api/contact", (request, response) => {
-  if (isRateLimited(request)) {
-    response.status(429).json({
-      ok: false,
-      message: "Trop de demandes ont été envoyées. Veuillez réessayer dans quelques instants.",
-    });
-    return;
-  }
-
+app.post("/api/contact", contactLimiter, (request, response) => {
   const honeypot = cleanText(request.body.company, 120);
   const name = cleanText(request.body.name, 80);
   const email = cleanText(request.body.email, 120).toLowerCase();
@@ -186,12 +193,12 @@ app.post("/api/contact", (request, response) => {
   });
 });
 
-app.get("/api/admin/messages", requireAdmin, (request, response) => {
+app.get("/api/admin/messages", adminLimiter, requireAdmin, (request, response) => {
   const messages = readMessages().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   response.json({ ok: true, messages });
 });
 
-app.get("/api/admin/messages/:id", requireAdmin, (request, response) => {
+app.get("/api/admin/messages/:id", adminLimiter, requireAdmin, (request, response) => {
   const message = readMessages().find((item) => item.id === request.params.id);
 
   if (!message) {
@@ -202,7 +209,7 @@ app.get("/api/admin/messages/:id", requireAdmin, (request, response) => {
   response.json({ ok: true, message });
 });
 
-app.patch("/api/admin/messages/:id", requireAdmin, (request, response) => {
+app.patch("/api/admin/messages/:id", adminLimiter, requireAdmin, (request, response) => {
   const messages = readMessages();
   const messageIndex = messages.findIndex((item) => item.id === request.params.id);
 
