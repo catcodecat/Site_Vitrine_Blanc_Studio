@@ -150,16 +150,30 @@ POST /api/contact
 Admin:
 
 ```text
+POST  /api/admin/login
+POST  /api/admin/logout
 GET   /api/admin/messages
 GET   /api/admin/messages/:id
 PATCH /api/admin/messages/:id
 ```
 
-Les endpoints admin demandent le header:
+`POST /api/admin/login` verifie `ADMIN_PASSWORD` et renvoie un token de session de courte duree. Les autres endpoints admin demandent le header:
 
 ```text
-x-admin-password: <ADMIN_PASSWORD>
+x-admin-token: <token recu a la connexion>
 ```
+
+## Securite
+
+- validation cote navigateur et cote serveur sur le formulaire de contact;
+- honeypot anti-spam;
+- rate limiting separe pour le formulaire de contact, les routes admin et la connexion admin;
+- authentification admin par token de session a duree limitee (30 minutes), le mot de passe n'est jamais renvoye sur les requetes suivantes;
+- comparaison du mot de passe admin en temps constant (`crypto.timingSafeEqual`);
+- en-tetes de securite HTTP via Helmet;
+- prise en compte de l'adresse IP reelle du client derriere le reverse proxy nginx (`trust proxy`);
+- `ADMIN_PASSWORD` fourni uniquement via un fichier `.env` local, jamais commite;
+- dependances tenues a jour (`npm audit`).
 
 ## Variables d'environnement
 
@@ -174,7 +188,8 @@ Variables supportees:
 
 - `PORT`: port du serveur Express;
 - `ADMIN_PASSWORD`: mot de passe administrateur;
-- `DATA_DIR`: dossier de stockage des messages, utile pour les tests ou un environnement specifique.
+- `DATA_DIR`: dossier de stockage des messages, utile pour les tests ou un environnement specifique;
+- `TRUST_PROXY`: a mettre a `1` uniquement quand l'API tourne derriere le nginx du docker-compose, pour lire correctement l'adresse IP reelle du client.
 
 Un exemple est disponible dans `.env.example`.
 
