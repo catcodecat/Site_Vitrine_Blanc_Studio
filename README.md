@@ -253,6 +253,8 @@ Le projet contient:
 - `docker-compose.yml`;
 - `nginx.conf`.
 
+Créer un fichier `.env` à la racine (voir `.env.example`) avant de lancer Docker, pour définir `ADMIN_PASSWORD`. `docker-compose.yml` charge automatiquement ce fichier.
+
 Commande:
 
 ```bash

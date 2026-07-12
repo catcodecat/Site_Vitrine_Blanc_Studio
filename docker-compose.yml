@@ -4,6 +4,10 @@ services:
       context: .
       dockerfile: Dockerfile.api
     container_name: blanc-studio-api
+    environment:
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - TRUST_PROXY=1
+      - NODE_ENV=production
     volumes:
       - ./data:/app/data
     restart: unless-stopped
