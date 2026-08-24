@@ -54,6 +54,10 @@ image pour un rendu de 309 px de large. J'ai converti les images concernées en 
 et les ai redimensionnées, ce qui a réduit le poids de la page de présentation de
 plus de 90 % sans changement visible à l'écran.
 
+J'ai également préparé une image dédiée au partage sur les réseaux sociaux, au
+format 1200 × 630 attendu par les principales plateformes, plutôt que de réutiliser
+une image du site aux proportions inadaptées.
+
 ## Activité type 2 : Développer la partie back-end d'une application web ou web mobile sécurisée
 
 ### Exemple : Développement de l'API et de l'espace administrateur de Blanc Studio

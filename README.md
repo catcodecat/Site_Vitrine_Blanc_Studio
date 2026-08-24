@@ -357,6 +357,9 @@ Les commits sont séparés par étapes:
 - SEO/accessibilité/performance;
 - tests et vérification finale.
 
+Les modifications importantes passent par une branche dédiée et une pull request,
+ce qui permet de relire l'ensemble des changements avant de les intégrer à `main`.
+
 ## Limites et évolutions
 
 ### Limites actuelles
