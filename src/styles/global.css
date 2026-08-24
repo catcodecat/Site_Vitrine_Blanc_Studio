@@ -905,8 +905,7 @@ textarea:focus {
 
 .project-detail p,
 .legal-page p,
-.about-panel p,
-.faq-list p {
+.about-panel p {
   color: var(--muted);
   line-height: 1.75;
 }

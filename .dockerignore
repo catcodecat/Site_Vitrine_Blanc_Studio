@@ -1,14 +1,8 @@
 node_modules
 dist
 .git
-.gitignore
-.env
-.DS_Store
-
-# Materiels de presentation Studi : inutiles au fonctionnement du site.
 docs
-docs-*
-Captures-*
 presentation-assets
-presentation_blanc_studio.html
-presentation_blanc_studio.pdf
+Captures-*
+*.pdf
+.env
