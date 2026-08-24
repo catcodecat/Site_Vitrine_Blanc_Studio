@@ -64,7 +64,7 @@ Pour le déploiement complet, j'ai écrit une configuration Docker en deux servi
 
 ### Moyens utilisés
 
-Node.js, Express, le module `crypto` de Node, Helmet, un middleware de rate limiting, le module de test natif de Node pour les tests d'intégration, curl pour vérifier le comportement de l'API sur des requêtes malformées, Docker et Docker Compose, Nginx.
+Node.js, Express, le module `crypto` de Node, Helmet, un middleware de rate limiting, un script d'intégration écrit en Node avec `fetch` et `child_process`, curl pour vérifier le comportement de l'API sur des requêtes malformées, Docker et Docker Compose, Nginx.
 
 ### Difficultés rencontrées
 
