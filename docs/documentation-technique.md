@@ -156,7 +156,6 @@ Autres mesures en place :
 - Ajouter les en-têtes de sécurité au niveau de Nginx, qui sert le HTML, en
   complément de Helmet qui protège l'API.
 - Envoyer une notification par email à la réception d'une demande.
-- Convertir les images lourdes en WebP et servir plusieurs tailles.
 - Ajouter ESLint, Prettier et un workflow d'intégration continue.
 - Ajouter des tests d'interface avec Playwright.
 - Ajouter du prerender pour les balises méta.

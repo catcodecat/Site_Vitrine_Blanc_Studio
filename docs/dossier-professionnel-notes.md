@@ -47,6 +47,13 @@ La principale difficulté a été de conserver l'identité visuelle de la premi�
 
 Une deuxième difficulté a porté sur le contraste des couleurs. La teinte du texte secondaire, héritée de la maquette d'origine, ne satisfaisait pas le rapport de 4,5:1 exigé par le niveau AA des WCAG. J'ai recalculé le rapport de contraste de chaque paire de couleurs de la palette et ajusté la variable CSS concernée pour atteindre la conformité sans modifier l'apparence générale du site.
 
+Une troisième difficulté a porté sur le poids des pages. Les portraits de l'équipe
+étaient enregistrés en PNG, un format sans perte destiné aux images de synthèse, et
+n'étaient pas redimensionnés pour leur taille d'affichage réelle : jusqu'à 2 Mo par
+image pour un rendu de 309 px de large. J'ai converti les images concernées en WebP
+et les ai redimensionnées, ce qui a réduit le poids de la page de présentation de
+plus de 90 % sans changement visible à l'écran.
+
 ## Activité type 2 : Développer la partie back-end d'une application web ou web mobile sécurisée
 
 ### Exemple : Développement de l'API et de l'espace administrateur de Blanc Studio
