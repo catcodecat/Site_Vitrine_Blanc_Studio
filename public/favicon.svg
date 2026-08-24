@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Blanc Studio">
+  <rect width="32" height="32" rx="6" fill="#111820"/>
+  <g fill="none" stroke="#ffffff" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M8.5 26V7.5h15V26"/>
+    <path d="M10.5 26v-6l2.5-3.5V26"/>
+    <path d="M14.5 26V14.5l4-5V26"/>
+    <path d="M20 26v-8.5l2-2.5V26"/>
+  </g>
+</svg>

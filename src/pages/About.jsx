@@ -18,7 +18,7 @@ function About() {
         </p>
       </div>
       <div className="about-panel reveal">
-        <img src="/images/Image_interier.png" alt="Ambiance intérieure présentée par Blanc Studio" loading="lazy" />
+        <img src="/images/Image_interier.webp" alt="Ambiance intérieure présentée par Blanc Studio" loading="lazy" />
         <div>
           <h2>Une approche visuelle et structurée</h2>
           <p>

@@ -30,4 +30,23 @@ La page Contact contient un formulaire avec les champs suivants :
 - message ;
 - acceptation de la politique de confidentialité.
 
-Les champs nom, email, message et acceptation sont obligatoires. Après validation, un message de confirmation s'affiche. L'envoi est simulé dans cette version.
+Les champs nom, email, message et acceptation sont obligatoires. Après validation, un message de confirmation s'affiche.
+
+La demande est réellement envoyée au serveur, qui la valide puis l'enregistre.
+Elle apparaît ensuite dans l'espace administrateur du site.
+
+## Espace administrateur
+
+L'espace administrateur est accessible à l'adresse `/admin`. Il demande le mot de
+passe défini par l'administrateur du site. La connexion reste valable 30 minutes,
+puis il faut se reconnecter.
+
+Une fois connecté, il est possible de :
+
+- consulter la liste des demandes reçues, de la plus récente à la plus ancienne ;
+- filtrer les demandes par statut ;
+- ouvrir une demande pour en lire le détail ;
+- changer son statut : Nouveau, Lu, Traité, Réponse envoyée ;
+- ajouter un commentaire interne à une demande.
+
+Le bouton de déconnexion invalide immédiatement la session côté serveur.

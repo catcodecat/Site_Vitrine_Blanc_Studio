@@ -2,7 +2,7 @@
 
 Cette version du projet contient un petit back-end Node.js avec Express.
 
-Le site est réalisé avec React et Vite. Les données du portfolio, des services, de l'équipe, des avis et de la FAQ sont stockées localement dans des fichiers JSON.
+Le site est réalisé avec React et Vite. Les données du portfolio, des services, de l'équipe et des avis sont stockées localement dans des fichiers JSON.
 
 ## Formulaire de contact
 
@@ -25,7 +25,17 @@ Le serveur enregistre les messages dans :
 data/messages.jsonl
 ```
 
-Si le serveur API n'est pas lancé, le front-end peut enregistrer la demande localement dans le `localStorage` du navigateur.
+Le formulaire de contact envoie une requête `POST /api/contact` à l'API Express.
+Le serveur valide les données indépendamment de la validation navigateur, vérifie
+le champ honeypot, applique le rate limiting, puis enregistre la demande dans
+`data/messages.jsonl` par ajout en fin de fichier (`appendFileSync`). Cette
+opération est atomique : plusieurs visiteurs peuvent envoyer une demande
+simultanément sans risque de conflit.
+
+Si l'API n'est pas joignable — c'est le cas sur le déploiement statique Netlify,
+où aucun serveur Node ne tourne — le front-end affiche un message indiquant que
+le service est momentanément indisponible. Aucune donnée n'est conservée dans le
+navigateur.
 
 Phrase à retenir pour l'examen :
 

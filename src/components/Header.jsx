@@ -16,7 +16,7 @@ function Header() {
   return (
     <header className="site-header">
       <Link className="brand" to="/" onClick={() => setIsOpen(false)}>
-        <img src="/images/logo_blanc_studio.png" alt="Logo Blanc Studio" />
+        <img src="/images/logo_blanc_studio.webp" alt="Logo Blanc Studio" />
         <span>
           <strong>Blanc Studio</strong>
           <small>Visualisation Architecturale</small>

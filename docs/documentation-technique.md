@@ -16,14 +16,15 @@ Le projet utilise React, Vite, React Router, JavaScript, CSS et un petit back-en
 
 Les routes principales sont :
 
-- `/`
-- `/a-propos`
-- `/services`
-- `/portfolio`
-- `/portfolio/:projectId`
-- `/processus`
-- `/contact`
-- `/mentions-legales`
+- `/` — accueil
+- `/a-propos` — présentation du studio et de l'équipe
+- `/services` — détail des prestations
+- `/portfolio` — liste des projets
+- `/portfolio/:projectId` — fiche d'un projet
+- `/processus` — étapes de travail
+- `/contact` — formulaire de demande
+- `/admin` — espace administrateur (`noindex, nofollow`)
+- route 404 — page non trouvée (`noindex, nofollow`)
 
 ## Données
 
@@ -109,11 +110,34 @@ Git est utilisé pour conserver l'historique des principales étapes du projet. 
 
 ## Sécurité
 
-- Pas de clé API dans le code.
-- Pas de mot de passe.
-- Pas de données sensibles.
-- Validation front-end du formulaire.
-- Pas d'injection HTML volontaire dans les contenus.
+L'accès à l'espace administrateur est protégé par la variable d'environnement
+`ADMIN_PASSWORD`, fournie via un fichier `.env` local qui n'est jamais versionné.
+
+Le mot de passe ne circule qu'une seule fois, lors de la connexion à
+`POST /api/admin/login`. Le serveur renvoie ensuite un token de session aléatoire
+de 32 octets, valable 30 minutes, révocable par une déconnexion côté serveur.
+Les requêtes suivantes s'authentifient avec l'en-tête `x-admin-token`.
+
+La comparaison du mot de passe utilise `crypto.timingSafeEqual`, qui traite le
+buffer entier quelle que soit la position du premier caractère différent. Une
+comparaison classique s'interrompt au premier écart, ce qui rend le temps de
+réponse exploitable pour deviner le mot de passe caractère par caractère. Le cas
+des longueurs différentes est traité explicitement, sans quoi la fonction lèverait
+une exception qui divulguerait elle-même la longueur attendue.
+
+Autres mesures en place :
+
+- validation systématique côté serveur, indépendante de la validation navigateur ;
+- honeypot anti-spam sur le formulaire de contact, masqué hors écran avec
+  `aria-hidden` et `tabindex="-1"` plutôt qu'en `display:none` ;
+- rate limiting différencié selon le risque : 5 envois par minute sur le formulaire
+  de contact, 20 requêtes par quart d'heure sur les routes d'administration,
+  5 tentatives par quart d'heure sur la connexion ;
+- en-têtes de sécurité HTTP via Helmet ;
+- lecture de l'adresse IP réelle derrière le reverse proxy (`trust proxy`), faute
+  de quoi le rate limiting s'appliquerait à tous les visiteurs confondus ;
+- dans `docker-compose.yml`, le service d'API n'expose aucun port sur l'hôte : il
+  n'est joignable que par Nginx sur le réseau interne Docker.
 
 ## Limites actuelles
 
@@ -124,8 +148,14 @@ Git est utilisé pour conserver l'historique des principales étapes du projet. 
 
 ## Améliorations futures
 
-- Créer une API.
-- Connecter une base de données.
-- Ajouter une authentification.
-- Ajouter un espace administrateur.
-- Envoyer les messages par email.
+- Migrer le stockage vers SQLite : index sur la date, lecture par identifiant sans
+  parcourir tout le fichier, transactions sur la mise à jour de statut.
+- Passer le token d'administration en cookie `httpOnly` avec `SameSite=Strict`.
+- Ajouter des gestionnaires d'erreur et de route inconnue renvoyant du JSON, pour
+  que l'API respecte son contrat en toutes circonstances.
+- Ajouter les en-têtes de sécurité au niveau de Nginx, qui sert le HTML, en
+  complément de Helmet qui protège l'API.
+- Envoyer une notification par email à la réception d'une demande.
+- Ajouter ESLint, Prettier et un workflow d'intégration continue.
+- Ajouter des tests d'interface avec Playwright.
+- Ajouter du prerender pour les balises méta.

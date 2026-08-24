@@ -16,12 +16,12 @@ function Home() {
       />
       <section className="hero">
         <div className="hero-media" aria-hidden="true">
-          <img src="/images/image_fond_hero.jpg" alt="" />
+          <img src="/images/image_fond_hero.webp" alt="" />
         </div>
 
         <div className="hero-content reveal">
           <div className="hero-brand">
-            <img src="/images/logo_blanc_studio.png" alt="" />
+            <img src="/images/logo_blanc_studio.webp" alt="" />
             <div>
               <p>Visualisation architecturale</p>
               <span>3D • IA • Design intérieur</span>
@@ -53,19 +53,19 @@ function Home() {
 
         <div className="gallery-grid">
           <article className="gallery-item large reveal">
-            <img src="/images/Images_exteriers/Chalet_Alpes.jpg" alt="Chalet haut de gamme en montagne" loading="lazy" />
+            <img src="/images/Images_exteriers/Chalet_Alpes.webp" alt="Chalet haut de gamme en montagne" loading="lazy" />
             <span>Extérieurs</span>
           </article>
           <article className="gallery-item reveal">
-            <img src="/images/Images_interiers/Salon.jpg" alt="Salon contemporain photoréaliste" loading="lazy" />
+            <img src="/images/Images_interiers/Salon.webp" alt="Salon contemporain photoréaliste" loading="lazy" />
             <span>Intérieurs</span>
           </article>
           <article className="gallery-item reveal">
-            <img src="/images/Images_AI/image_ai_2.png" alt="Concept architectural créé avec IA" loading="lazy" />
+            <img src="/images/Images_AI/image_ai_2.webp" alt="Concept architectural créé avec IA" loading="lazy" />
             <span>Concepts IA</span>
           </article>
           <article className="gallery-item wide reveal">
-            <img src="/images/Images_exteriers/Logement_Villefranche-sur-Saone_2.jpg" alt="Projet immobilier résidentiel" loading="lazy" />
+            <img src="/images/Images_exteriers/Logement_Villefranche-sur-Saone_2.webp" alt="Projet immobilier résidentiel" loading="lazy" />
             <span>Programmes immobiliers</span>
           </article>
         </div>
@@ -87,25 +87,25 @@ function Home() {
           <article>
             <h3>Extérieurs</h3>
             <div>
-              <img src="/images/Images_exteriers/Beach-club-Mandelieu.jpg" alt="Beach club à Mandelieu" loading="lazy" />
-              <img src="/images/Images_exteriers/Logement_Arnas.jpg" alt="Logement à Arnas" loading="lazy" />
-              <img src="/images/Images_exteriers/Villa_St_Raphael.jpg" alt="Villa à Saint-Raphaël" loading="lazy" />
+              <img src="/images/Images_exteriers/Beach-club-Mandelieu.webp" alt="Beach club à Mandelieu" loading="lazy" />
+              <img src="/images/Images_exteriers/Logement_Arnas.webp" alt="Logement à Arnas" loading="lazy" />
+              <img src="/images/Images_exteriers/Villa_St_Raphael.webp" alt="Villa à Saint-Raphaël" loading="lazy" />
             </div>
           </article>
           <article>
             <h3>Intérieurs</h3>
             <div>
-              <img src="/images/Images_interiers/Chambre.jpg" alt="Chambre contemporaine" loading="lazy" />
-              <img src="/images/Images_interiers/Salon_3.jpg" alt="Salon lumineux" loading="lazy" />
-              <img src="/images/Images_interiers/Sejour_2.jpg" alt="Séjour contemporain" loading="lazy" />
+              <img src="/images/Images_interiers/Chambre.webp" alt="Chambre contemporaine" loading="lazy" />
+              <img src="/images/Images_interiers/Salon_3.webp" alt="Salon lumineux" loading="lazy" />
+              <img src="/images/Images_interiers/Sejour_2.webp" alt="Séjour contemporain" loading="lazy" />
             </div>
           </article>
           <article>
             <h3>Images IA</h3>
             <div>
-              <img src="/images/Images_AI/image_ai_2.png" alt="Concept IA architectural" loading="lazy" />
-              <img src="/images/Images_AI/image_ai_4.png" alt="Concept IA intérieur" loading="lazy" />
-              <img src="/images/Image_AI.png" alt="Concept IA premium" loading="lazy" />
+              <img src="/images/Images_AI/image_ai_2.webp" alt="Concept IA architectural" loading="lazy" />
+              <img src="/images/Images_AI/image_ai_4.webp" alt="Concept IA intérieur" loading="lazy" />
+              <img src="/images/Image_AI.webp" alt="Concept IA premium" loading="lazy" />
             </div>
           </article>
         </div>
@@ -119,7 +119,7 @@ function Home() {
               avec une présentation plus émotionnelle qu'une image fixe.
             </p>
           </div>
-          <video controls preload="metadata" poster="/images/Images_exteriers/Chalet_Alpes.jpg">
+          <video controls preload="metadata" poster="/images/Images_exteriers/Chalet_Alpes.webp">
             <source src="/images/video3D.mp4" type="video/mp4" />
             Votre navigateur ne peut pas lire cette vidéo.
           </video>
