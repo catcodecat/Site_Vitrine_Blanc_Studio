@@ -20,9 +20,22 @@ J'ai également développé un composant `Seo` qui met à jour, pour chaque rout
 
 Le formulaire de contact comporte une validation côté navigateur qui donne un retour immédiat: champs obligatoires, format d'email, consentement à la politique de confidentialité. Cette validation est un confort d'usage, pas une protection: le serveur revalide tout de son côté, sans faire confiance au client.
 
+J'ai enfin traité le poids des pages, qui était le principal défaut de
+performance du site. Plutôt que de redimensionner les images au jugé, j'ai mesuré
+dans le navigateur la taille réellement occupée par chaque image sur l'ensemble
+des pages et sur quatre largeurs de viewport, puis j'ai retenu cette largeur
+multipliée par 1,8 pour rester net sur les écrans à haute densité. Les fichiers
+ont ensuite été convertis en WebP. La page d'accueil passe de 10,67 Mo à 1,23 Mo
+et la page « À propos » de 7,56 Mo à 0,40 Mo, sans changement visible à l'écran:
+plusieurs portraits de l'équipe étaient enregistrés en PNG, un format sans perte
+conçu pour les aplats et non pour la photographie, ce qui expliquait à lui seul
+des fichiers de plus de deux mégaoctets. J'ai conservé une image dédiée en JPEG
+pour les aperçus sur les réseaux sociaux, tous les robots ne lisant pas encore
+le WebP.
+
 ### Moyens utilisés
 
-React 18, Vite, React Router, JavaScript, CSS, Visual Studio Code, les DevTools du navigateur pour l'inspection du DOM et l'analyse réseau, Git pour le versionnement, Docker et Nginx pour la configuration de production.
+React 18, Vite, React Router, JavaScript, CSS, Visual Studio Code, les DevTools du navigateur pour l'inspection du DOM et l'analyse réseau, la bibliothèque `sharp` pour le redimensionnement et la conversion des images en WebP, Git pour le versionnement, Docker et Nginx pour la configuration de production.
 
 ### Avec qui j'ai travaillé
 
@@ -85,7 +98,7 @@ J'ai utilisé Git pour conserver l'historique du projet. Les commits sont regrou
 - Ajouter des gestionnaires d'erreur et de route inconnue renvoyant du JSON, pour que l'API respecte son contrat en toutes circonstances.
 - Ajouter les en-têtes de sécurité au niveau de Nginx, qui sert le HTML, en complément de Helmet qui protège l'API.
 - Envoyer une notification par email à la réception d'une demande.
-- Convertir les images lourdes en WebP et servir plusieurs tailles.
+- Servir plusieurs tailles d'image via `srcset` selon la largeur d'écran.
 - Ajouter ESLint, Prettier et un workflow d'intégration continue exécutant build et tests à chaque envoi.
 - Ajouter des tests d'interface avec Playwright.
 - Ajouter du prerender pour que les balises méta soient présentes dans le HTML servi aux robots qui n'exécutent pas JavaScript.

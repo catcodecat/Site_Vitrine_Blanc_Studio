@@ -7,7 +7,7 @@
     "audience": "Promoteurs, architectes, constructeurs et agences immobilières.",
     "deliverable": "Vues extérieures prêtes pour plaquettes, annonces, panneaux de vente et présentations investisseurs.",
     "timeline": "Premières previews selon complexité du dossier.",
-    "image": "/images/Images_exteriers/Villa_Cap_Antibes.jpg"
+    "image": "/images/Images_exteriers/Villa_Cap_Antibes.webp"
   },
   {
     "id": "visualisation-interieure",
@@ -17,7 +17,7 @@
     "audience": "Architectes d'intérieur, décorateurs, particuliers et exploitants d'espaces premium.",
     "deliverable": "Images intérieures cadrées, cohérentes avec les matériaux, lumières et intentions du projet.",
     "timeline": "Prévisualisations puis corrections avant rendu final.",
-    "image": "/images/Images_interiers/Sejour.jpg"
+    "image": "/images/Images_interiers/Sejour.webp"
   },
   {
     "id": "animation-3d",
@@ -27,7 +27,7 @@
     "audience": "Programmes immobiliers, concours, lancements commerciaux et présentations haut de gamme.",
     "deliverable": "Séquence vidéo exportée pour site web, réseaux sociaux ou rendez-vous client.",
     "timeline": "Storyboard, previews, corrections puis export final.",
-    "image": "/images/Images_exteriers/Chalet_Alpes.jpg"
+    "image": "/images/Images_exteriers/Chalet_Alpes.webp"
   },
   {
     "id": "visites-virtuelles",
@@ -37,7 +37,7 @@
     "audience": "Promoteurs, showrooms, espaces de vente et projets nécessitant une immersion.",
     "deliverable": "Parcours interactif ou supports immersifs pour faciliter la projection et la décision.",
     "timeline": "Préparation des points de vue, intégration et validation de l'expérience.",
-    "image": "/images/Images_interiers/Spa_de_Luxe.jpg"
+    "image": "/images/Images_interiers/Spa_de_Luxe.webp"
   },
   {
     "id": "concepts-ia",
@@ -47,7 +47,7 @@
     "audience": "Architectes, designers, marques et porteurs de projet en phase d'exploration.",
     "deliverable": "Pistes visuelles et moodboards IA pour comparer des directions avant production 3D.",
     "timeline": "Itérations rapides pour cadrer l'intention visuelle.",
-    "image": "/images/Images_AI/image_ai_4.png"
+    "image": "/images/Images_AI/image_ai_4.webp"
   },
   {
     "id": "supports-vente",
@@ -57,6 +57,6 @@
     "audience": "Développeurs immobiliers, agences, équipes marketing et directions commerciales.",
     "deliverable": "Pack de visuels cohérent pour renforcer la compréhension et la valeur perçue du projet.",
     "timeline": "Production organisée selon le calendrier commercial.",
-    "image": "/images/Images_exteriers/Residence_Mets.jpg"
+    "image": "/images/Images_exteriers/Residence_Mets.webp"
   }
 ]

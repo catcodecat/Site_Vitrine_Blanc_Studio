@@ -2,25 +2,25 @@
   {
     "id": "aac",
     "company": "AAC",
-    "logo": "/images/Logo_1.png",
+    "logo": "/images/Logo_1.webp",
     "quote": "Blanc Studio nous accompagne avec des images élégantes, précises et immédiatement exploitables pour présenter des projets haut de gamme."
   },
   {
     "id": "habiter",
     "company": "Groupe Habiter",
-    "logo": "/images/Logo_2.png",
+    "logo": "/images/Logo_2.webp",
     "quote": "Les visuels créés par Blanc Studio rendent nos programmes plus lisibles et plus attractifs dès les premières présentations commerciales."
   },
   {
     "id": "icade",
     "company": "ICADE",
-    "logo": "/images/Logo_3.png",
+    "logo": "/images/Logo_3.webp",
     "quote": "Une approche professionnelle, claire et efficace pour valoriser l'architecture, les usages et l'ambition de nos projets immobiliers."
   },
   {
     "id": "serenite",
     "company": "Sérénité Luxury Monaco",
-    "logo": "/images/Logo_4.png",
+    "logo": "/images/Logo_4.webp",
     "quote": "Des images premium qui traduisent parfaitement l'exigence, le confort et l'univers haut de gamme attendus par nos clients."
   }
 ]

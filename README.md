@@ -298,6 +298,27 @@ http://localhost:8080
 
 Un seul port est exposé sur l'hôte. Le service `blanc-studio-api` n'a pas de section `ports`: nginx est le seul point d'entrée et relaie `/api/` vers l'API sur le réseau interne Docker.
 
+## Performances
+
+Les images sont servies en WebP, redimensionnées d'après la taille réellement
+occupée à l'écran (mesurée dans le navigateur sur quatre largeurs de viewport,
+puis multipliée par 1,8 pour les écrans à haute densité). Le poids des pages
+avant et après cette conversion:
+
+| Page | Avant | Après |
+| --- | --- | --- |
+| `/` | 10,67 Mo | 1,23 Mo |
+| `/a-propos` | 7,56 Mo | 0,40 Mo |
+| `/services` | 4,11 Mo | 0,91 Mo |
+| `/portfolio` | 3,24 Mo | 1,15 Mo |
+
+Le dossier `public/images` passe de 51 Mo à 25 Mo. Une image `og-blanc-studio.jpg`
+au format 1200x630 est conservée en JPEG pour les aperçus sur les réseaux sociaux,
+tous les robots d'indexation ne lisant pas encore le WebP.
+
+Le bundle JavaScript pèse 208 ko (65 ko une fois compressé) et la feuille de style
+16 ko (4 ko compressés): le poids des pages venait uniquement des images.
+
 ## SEO
 
 Éléments en place:
@@ -356,7 +377,7 @@ Ces limites sont assumées et documentées, pas découvertes après coup.
 - Passer le token admin en cookie `httpOnly`.
 - Ajouter des notifications email.
 - Ajouter des tests end-to-end UI avec Playwright.
-- Convertir les images lourdes en WebP et servir plusieurs tailles.
+- Servir plusieurs tailles d'image via `srcset` selon la largeur d'écran.
 - Ajouter ESLint, Prettier et un workflow GitHub Actions.
 - Ajouter du prerender pour les méta-tags par page.
 - Ajouter des données structurées JSON-LD.

@@ -3,24 +3,24 @@
     "name": "Roman",
     "role": "Fondateur et architecte",
     "description": "Architecte diplômé de l'École d'Architecture de Strasbourg, Roman accompagne les projets de conception et de visualisation architecturale.",
-    "image": "/images/Roman.jpg"
+    "image": "/images/Roman.webp"
   },
   {
     "name": "Aleksandra",
     "role": "Designer d'intérieur",
     "description": "Aleksandra crée des espaces harmonieux et élégants, avec une attention particulière portée aux matières, aux couleurs et aux détails.",
-    "image": "/images/Aleksandra.png"
+    "image": "/images/Aleksandra.webp"
   },
   {
     "name": "Alice",
     "role": "Assistante projet",
     "description": "Alice accompagne les projets au quotidien et veille à la bonne coordination des différentes étapes.",
-    "image": "/images/Alice.png"
+    "image": "/images/Alice.webp"
   },
   {
     "name": "Clément",
     "role": "Designer",
     "description": "Clément développe des concepts créatifs et fonctionnels, en accord avec les besoins et l'identité des clients.",
-    "image": "/images/Clement.png"
+    "image": "/images/Clement.webp"
   }
 ]

@@ -31,7 +31,7 @@ function upsertLink(selector, attributes) {
   });
 }
 
-function Seo({ title, description = fallbackDescription, image = "/images/image_fond_hero.jpg", noIndex = false }) {
+function Seo({ title, description = fallbackDescription, image = "/images/og-blanc-studio.jpg", noIndex = false }) {
   const location = useLocation();
 
   useEffect(() => {
